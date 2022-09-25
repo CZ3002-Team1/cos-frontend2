@@ -1,0 +1,42 @@
+@import "GlobalStyles/spacing.scss";
+@import "GlobalStyles/color.scss";
+
+.TypographyRoot {
+  font-family: "Typold";
+  font-weight: 700;
+}
+.Typo-H {
+  font-family: "Typold-Bold";
+}
+.H1 {
+  font-size: rem-calc(56px);
+}
+.H2 {
+  font-size: rem-calc(40px);
+}
+.H3 {
+  font-size: rem-calc(32px);
+}
+.B1 {
+  font-size: rem-calc(24px);
+}
+.B2 {
+  font-weight: 300;
+  font-size: rem-calc(20px);
+}
+
+.brightred {
+  color: $brand__brightred;
+}
+
+.disabled {
+  color: $brand__lightgrey;
+}
+
+.darkred {
+  color: $brand__darkred;
+}
+
+.black {
+  color: $brand__black;
+}

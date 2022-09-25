@@ -1,0 +1,23 @@
+/**
+ * the higher the number the higher it's overlay will be.
+ * It still follows the rules of stardard zindex. Which is limited by parent zindex if specified.
+ * i.e. 
+ *      component A Parent -> zIndex 1,
+ *      component A -> zIndex 10,
+ *      component B -> zIndex 5,
+ * 
+ *      overlay outcome -> component A Parent < component A < component B
+ */
+
+$zIndexControls: (
+	base: 999,
+	standard: -1,
+	modalMask: 1,
+	modalWrap: 2,
+	dropdown: 3,
+	alert: 4,
+);
+
+@mixin overwritezIndex($offset) {
+	z-index: map-get($map: $zIndexControls, $key: base) + $offset !important;
+}

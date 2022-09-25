@@ -1,0 +1,83 @@
+@import 'GlobalStyles/spacing.scss';
+@import 'GlobalStyles/utilities.scss';
+@import 'Commons/ZIndexControls/style.scss';
+
+$-vertical_spacing: map-get(
+	$map: $spacing,
+	$key: 'S',
+);
+$-alert_width: 390px;
+$-alert_width_long: 780px;
+$-alert_height: 40px;
+
+.AlertContainer {
+	top: $navbarHeight + $-vertical_spacing;
+	color: white !important;
+	width: 100vw;
+	max-height: 20;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 0px !important;
+
+
+	&__toast {
+		color: white !important;
+		max-width: 80vw;
+		min-width: rem-calc(400);
+		padding: 10px !important;
+		margin: 0px 0px $-vertical_spacing !important;
+		min-height: $-alert_height !important;
+	}
+
+	&__body {
+		color: white !important;
+		padding: 0px !important;
+		margin: 0px !important;
+	}
+}
+
+// ===== Custom Animation =====
+@keyframes expand-in {
+	0% {
+		transform: scaleY(0);
+		opacity: 0;
+	}
+	100% {
+		transform: scaleY(1);
+		opacity: 1;
+	}
+}
+
+.expand-in {
+	transform-origin: top;
+	animation: expand-in 0.25s ease-out both;
+}
+
+@keyframes collapse-out {
+	0% {
+		transform: scaleY(1);
+		opacity: 1;
+	}
+	100% {
+		transform: scaleY(0);
+		opacity: 0;
+	}
+}
+
+.collapse-out {
+	transform-origin: top;
+	animation: collapse-out 0.25s ease-in both;
+}
+
+@media only screen and (max-width: 600px) {
+	.AlertContainer__body {
+		color: white !important;
+		// font-size: 2vmin;
+	}
+	.Toastify__toast-body {
+		color: white !important;
+	}
+}

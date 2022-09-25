@@ -1,0 +1,68 @@
+@import 'GlobalStyles/color.scss';
+@import 'GlobalStyles/spacing.scss';
+
+.navbar {
+  height: $navbarHeight;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+  justify-content: space-between;
+  background-color: white;
+  a {
+    color: $brand__black !important;
+    text-decoration: none;
+  }
+  &__logo {
+    cursor: pointer;
+    padding-left: rem-calc(50);
+    &__icon {
+      max-width: rem-calc(200);
+    }
+  }
+
+  &__right {
+    padding-right: rem-calc(50);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   
+    &__profile {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        transition: all 0.3s ease-in-out;
+        .navbar__right__profile__icon {
+          path {
+            transition: all 0.3s ease-in-out;
+            stroke: $brand__brightred !important;
+          }
+        }
+        .navbar__right__profile__name {
+          transition: all 0.3s ease-in-out;
+          color: $brand__brightred;
+        }
+      }
+
+      &__name {
+        margin-left: rem-calc(10);
+        padding-right: rem-calc(80);
+      }
+    }
+    &__logout {
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        path {
+          transition: all 0.3s ease-in-out;
+          stroke: $brand__brightred !important;
+        }
+      }
+    }
+  }
+  svg {
+    width: rem-calc(48) !important;
+    height: rem-calc(48)  !important;
+  }
+}

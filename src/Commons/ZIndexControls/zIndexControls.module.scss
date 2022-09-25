@@ -1,0 +1,10 @@
+@import './style.scss';
+
+:export {
+	base: map-get($map: $zIndexControls, $key: base);
+	standard: map-get($map: $zIndexControls, $key: standard);
+	modalMask: map-get($map: $zIndexControls, $key: modalMask);
+	modalContent: map-get($map: $zIndexControls, $key: modalContent);
+	dropdown: map-get($map: $zIndexControls, $key: dropdown);
+	alert: map-get($map: $zIndexControls, $key: alert);
+}

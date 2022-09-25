@@ -1,0 +1,68 @@
+@import "~antd/dist/antd.css";
+@import "Fonts/style.scss";
+@import "GlobalStyles/color.scss";
+@import "./Styles/Overwrites/antd.css";
+
+* {
+  // color: $brand__black;
+  font-size: 1.3vmin;
+  // --antd-wave-shadow-color: $brand__brightred !important;
+}
+
+// MOVED TO ANTD.CSS
+// .ant-radio-checked .ant-radio-inner{
+//   border-color: $brand__brightred !important ;
+// }
+
+// .ant-radio-checked .ant-radio-inner:after{
+//   background-color: $brand__brightred;
+// }
+
+// .ant-radio:hover .ant-radio-inner {
+//   border-color: $brand__brightred ;
+// }
+
+// brown? grey?
+// .ant-input {
+//   &:focus {
+//     border: solid 1px $brand__brown;
+//     box-shadow: none;
+//   }
+//   &:hover {
+//     border: solid 1px $brand__brown;
+//     box-shadow: none;
+//   }
+// }
+
+// .ant-picker-focused {
+//     border: solid 1px $brand__brown !important;
+//     box-shadow: none;
+// }
+// .ant-picker {
+//   &:hover {
+//     border: solid 1px $brand__brown !important;
+//     box-shadow: none;
+//   }
+// }
+.ant-form-item-label {
+  justify-self: center;
+  align-self: center;
+}
+
+.ant-table-content {
+  font-size: 12px;
+  td,
+  th {
+    font-size: 12px;
+  }
+  a {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  * {
+    // color: $brand__black;
+    font-size: 2vmin;
+  }
+}

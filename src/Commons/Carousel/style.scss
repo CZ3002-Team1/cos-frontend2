@@ -1,0 +1,68 @@
+@import 'GlobalStyles/color.scss';
+@import 'GlobalStyles/spacing.scss';
+
+.Carousel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+
+  &__button {
+    position: relative;
+    width: rem-calc(50);
+    height: rem-calc(50);
+    background-color: grey;
+    border-radius: 50%;
+    cursor: pointer;
+
+    box-shadow: 0 0 rem-calc(10) 0 #ffffff inset;
+
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transition: all 0.3s ease-in-out;
+      transform: scale(1.1);
+    }
+    &__previous {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-80%, -50%);
+      height: 0;
+      width: 0;
+      border-top: rem-calc(10) solid transparent;
+      border-bottom: rem-calc(10) solid transparent;
+      border-left: rem-calc(17.64) solid transparent;
+      border-right: rem-calc(17.64) solid white;
+    }
+    &__next {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-20%, -50%);
+      height: 0;
+      width: 0;
+      border-top: rem-calc(10) solid transparent;
+      border-bottom: rem-calc(10) solid transparent;
+      border-left: rem-calc(17.64) solid white;
+      border-right: rem-calc(17.64) solid transparent;
+    }
+  }
+
+  &__items {
+    display: grid;
+
+    > .carousel-item {
+      grid-area: 1 / -1;
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .Carousel {
+    &__items {
+      transform: scale(0.75);
+    }
+  }
+}

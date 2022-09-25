@@ -1,0 +1,16 @@
+@import "GlobalStyles/color.scss";
+@import "GlobalStyles/spacing.scss";
+
+.customInput {
+    border: 1px solid  $brand__lightgrey;
+    border-radius: rem-calc(8);
+    height: rem-calc(60);
+    &:focus {
+        border: 1px solid  $brand__lightgrey;
+        box-shadow: none;
+    }
+    &:hover {
+        border: 1px solid  $brand__lightgrey;
+        box-shadow: none;
+    }
+}

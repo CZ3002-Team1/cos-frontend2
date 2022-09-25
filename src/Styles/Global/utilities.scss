@@ -1,0 +1,50 @@
+.DC__hide {
+	display: none !important;
+}
+
+.DC__selector {
+	cursor: pointer;
+}
+
+$default-height: 100vh;
+@mixin DC__scroll-y($height: $default-height, $overflow: auto) {
+	overflow-y: $overflow;
+	height: $height;
+}
+
+/* =========================================================
+// Hides scrollbar, but allows scrolling
+
+@test
+ #working Chrome 88.0
+ #working firefox 85.0.1
+ #working safari 14.0.3
+ ========================================================= */
+@mixin DC_hide_scrollbar {
+	-ms-overflow-style: none; /* Internet Explorer 10+ */
+	scrollbar-width: none; /* Firefox */
+
+	&::-webkit-scrollbar {
+		display: none; /* Safari and Chrome */
+	}
+}
+
+/* =========================================================
+// Limits the number of lines displayed. 
+// Terminates with ellipsis if limit is exceeded
+@params $lines: Max number of lines permitted to display
+
+@test
+ #working Chrome 88.0
+ #working firefox 85.0.1
+ #working safari 14.0.3
+ ========================================================= */
+@mixin DC_limit_text_lines($lines: 1, $max_width: 100%) {
+	max-width: $max_width;
+	word-break: break-all;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: $lines;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

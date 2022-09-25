@@ -1,0 +1,24 @@
+$default-gutter: 16px;
+$spacing: (
+  "XS": 4px,
+  "S": 8px,
+  "M": 12px,
+  "L": 16px,
+  "XL": 24px,
+  "XXL": 32px,
+);
+
+$navbarHeight: 100px;
+$footerHeight: 300px;
+
+@function rem-calc($pixels, $gutter: $default-gutter) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($gutter)) {
+    $gutter: $gutter * 1px;
+  }
+
+  @return calc($pixels / $gutter) * 1rem;
+}

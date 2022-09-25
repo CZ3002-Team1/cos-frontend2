@@ -11,7 +11,7 @@ import { CustomButton } from "../../../Commons/CustomButton";
 //* Assets
 import landingPageBackround from "./Assets/landingPageBackground.jpg";
 
-export default function HomePage() {
+export default function LandingPage() {
   return (
     <div className="homepage">
       <div className="homepage__left">

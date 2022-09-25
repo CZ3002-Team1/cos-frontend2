@@ -1,21 +1,15 @@
-import _ from "lodash";
 import React from "react";
-import { Button } from "antd";
-import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
+import _ from "lodash";
+
 import { Body1 } from "Styles/Typography";
-import { CustomButton } from "../CustomButton";
 
 import "./style.scss";
 
-import { socialMedia, websitePINTU, emailPINTU } from "./constants";
+import { socialMedia } from "./constants";
 
 export default function Footer() {
-  const { pathname } = useLocation();
-
   return (
     <div className="footer">
-      {pathname !== "/login" && <div className="footer__whiteMargin" />}
       <div className="footer__container">
         <div className="footer__top">
           <div className="footer__top__left">

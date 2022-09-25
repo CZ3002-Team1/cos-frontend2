@@ -1,13 +1,21 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import App from "../App";
-import HomePage from "../Pages/General/HomePage";
+import EventsPage from "../Pages/Events";
+import LandingPage from "../Pages/General/LandingPage";
+import ShopPage from "../Pages/MerchandiseShop";
+import BuyerDashboardPage from "./../Pages/General/DashboardPage/index";
+import IndexSwapPage from "./../Pages/IndexSwap/index";
 
 const MainNavigation = () => {
   return (
     <Routes>
       <Route path="/" element={<App />}>
-        <Route index element={<HomePage />} />
+        <Route index element={<LandingPage />} />
+        <Route path="dashboard" element={<BuyerDashboardPage />} />
+        <Route path="events" element={<EventsPage />} />
+        <Route path="shop" element={<ShopPage />} />
+        <Route path="index-swap" element={<IndexSwapPage />} />
       </Route>
     </Routes>
   );

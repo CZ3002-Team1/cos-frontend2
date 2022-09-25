@@ -2,10 +2,6 @@
 @import "GlobalStyles/color.scss";
 
 .footer {
-  &__whiteMargin {
-    height: rem-calc(100);
-    background-color: white;
-  }
   &__container {
     padding: rem-calc(80);
 

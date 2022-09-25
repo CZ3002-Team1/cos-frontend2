@@ -1,0 +1,10 @@
+@import "GlobalStyles/spacing.scss";
+@import "GlobalStyles/color.scss";
+
+.navbar-selection {
+  margin: rem-calc(30);
+  cursor: pointer;
+  &__text {
+    color: $storm_dust;
+  }
+}

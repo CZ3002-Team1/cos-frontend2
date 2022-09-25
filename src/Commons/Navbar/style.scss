@@ -9,15 +9,15 @@
   align-items: center;
   justify-content: space-between;
   background-color: $jungle_mist;
-  a {
-    color: $brand__black !important;
-    text-decoration: none;
-  }
-  &__logo {
-    cursor: pointer;
-    padding-left: rem-calc(50);
-    &__icon {
-      max-width: rem-calc(100);
+  &__left {
+    display: flex;
+    align-items: center;
+    &__logo {
+      cursor: pointer;
+      padding-left: rem-calc(50);
+      &__icon {
+        max-width: rem-calc(100);
+      }
     }
   }
 

@@ -10,13 +10,14 @@ import { Body1 } from "Styles/Typography";
 import SCSEClubLogo from "./Assets/SCSE.png";
 import UserCircle from "./Assets/UserCircle.svg";
 import Log_Out from "./Assets/Log_Out.svg";
+import NavbarSelection from "./components/NavbarSelection";
 
 // import { ENUM_USER_TYPES } from "../../App/Constant";
 
 export default function Navbar() {
   // const dispatch = useDispatch();
   // const { pathname } = useLocation();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   // const { isLoggedIn, isRegistered, userType } = useSelector(
   //   (state) => state.userReducer
   // );
@@ -34,13 +35,19 @@ export default function Navbar() {
 
   return (
     <div className="navbar">
-      <div
-        className="navbar__logo"
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        <img src={SCSEClubLogo} className="navbar__logo__icon" />
+      <div className="navbar__left">
+        <div
+          className="navbar__left__logo"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <img src={SCSEClubLogo} className="navbar__left__logo__icon" />
+        </div>
+
+        <NavbarSelection target="/events">Events</NavbarSelection>
+        <NavbarSelection target="/shop">Shop</NavbarSelection>
+        <NavbarSelection target="index-swap">Index Swap</NavbarSelection>
       </div>
 
       {/* <div className="navbar__right">

@@ -2,13 +2,16 @@ import React, { Fragment } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./../Commons/Navbar/index";
 import Footer from "./../Commons/Footer/index";
+import "./style.scss";
 
 const App = () => (
-  <Fragment>
+  <div>
     <Navbar />
-    <Outlet />
+    <div className="app-wrapper">
+      <Outlet />
+    </div>
     <Footer />
-  </Fragment>
+  </div>
 );
 
 export default App;

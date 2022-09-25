@@ -7,7 +7,7 @@ const MainNavigation = () => {
   return (
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="/login" element={<HomePage />} />
+        <Route index element={<HomePage />} />
       </Route>
     </Routes>
   );

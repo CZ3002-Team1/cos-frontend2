@@ -7,7 +7,7 @@ import "./style.scss";
 import { Body1 } from "Styles/Typography";
 
 //* Assets
-import LogoPINTU from "./Assets/PINTU.png";
+import SCSEClubLogo from "./Assets/SCSE.png";
 import UserCircle from "./Assets/UserCircle.svg";
 import Log_Out from "./Assets/Log_Out.svg";
 
@@ -40,7 +40,7 @@ export default function Navbar() {
           navigate("/");
         }}
       >
-        <img src={LogoPINTU} className="navbar__logo__icon" />
+        <img src={SCSEClubLogo} className="navbar__logo__icon" />
       </div>
 
       {/* <div className="navbar__right">

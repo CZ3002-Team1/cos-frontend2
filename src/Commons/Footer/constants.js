@@ -1,23 +1,23 @@
-import React from 'react';
+import React from "react";
 //* Assets
-import * as FacebookLogo from './Assets/facebook.png';
-import * as InstagramLogo from './Assets/instagram.png';
-import * as MailLogo from './Assets/mail.png';
+import linkedInLogo from "./Assets/linkedIn.png";
+import instagramLogo from "./Assets/instagram.png";
+import mailLogo from "./Assets/mail.png";
 
 export const socialMedia = [
   {
-    link: 'https://www.facebook.com/pintusingapura/',
-    logo: FacebookLogo.default,
+    link: "https://www.linkedin.com/company/ntu-scseclub/",
+    logo: linkedInLogo,
   },
   {
-    link: 'https://instagram.com/pintugram',
-    logo: InstagramLogo.default,
+    link: "https://www.instagram.com/ntucseclub/",
+    logo: instagramLogo,
   },
   {
-    link: 'mailto:kontakpintusg@gmail.com',
-    logo: MailLogo.default,
+    link: "mailto:cse-it@e.ntu.edu.sg",
+    logo: mailLogo,
   },
 ];
 
-export const websitePINTU = 'https://pintusingapura.org';
-export const emailPINTU = 'mailto:itpintusingapura@gmail.com';
+export const websitePINTU = "https://pintusingapura.org";
+export const emailPINTU = "mailto:itpintusingapura@gmail.com";

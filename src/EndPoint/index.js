@@ -1,3 +1,4 @@
-const endPoint = "https://costeam1-backend.herokuapp.com/";
+// const apiEndPoint = "https://costeam1-backend.herokuapp.com/";
+const apiEndPoint = "http://localhost:5000/";
 
-export default endPoint;
+export default apiEndPoint;

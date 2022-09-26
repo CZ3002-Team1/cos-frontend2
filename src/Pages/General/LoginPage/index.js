@@ -1,10 +1,14 @@
 import React from "react";
-import { Button, Checkbox, Form, Input } from "antd";
-import "./style.scss";
+import { Form, Input } from "antd";
+import { axios } from "axios";
+
 import CustomButton from "Commons/CustomButton";
+import apiEndPoint from "./../../../EndPoint/index";
+
+import "./style.scss";
 const LoginPage = () => {
-  const onFinish = (values) => {
-    console.log("Success:", values);
+  const onFinish = async (values) => {
+    const res = await axios.post(`${apiEndPoint}api/auth/login`);
   };
 
   const onFinishFailed = (errorInfo) => {

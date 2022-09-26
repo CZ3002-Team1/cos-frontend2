@@ -8,6 +8,7 @@ import "./style.scss";
 import { Header1 } from "Styles/Typography";
 import { Button } from "antd";
 import IndexSwapForm from "./IndesSwapForm";
+import apiEndPoint from "./../../EndPoint/index";
 
 const IndexSwapPage = () => {
   const [moduleQuery, setModuleQuery] = useState("");
@@ -28,19 +29,17 @@ const IndexSwapPage = () => {
   };
 
   const handleFormSubmit = async (values) => {
-    await axios
-      .post("http://localhost:5000/api/indexSwap", values)
-      .then((res) => {
-        console.log(res);
-        setData([...data, values]);
-        setDisplayData([...data, values]);
-      });
+    await axios.post(`${apiEndPoint}api/indexSwap`, values).then((res) => {
+      console.log(res);
+      setData([...data, values]);
+      setDisplayData([...data, values]);
+    });
   };
 
   useEffect(() => {
     const getData = async () => {
       await axios
-        .get("http://localhost:5000/api/indexSwap")
+        .get(`${apiEndPoint}api/indexSwap`)
         .then((res) => {
           setDisplayData(res.data.data);
           setData(res.data.data);

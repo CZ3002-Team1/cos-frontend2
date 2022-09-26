@@ -3,27 +3,21 @@ import { Form, Input } from "antd";
 import "./style.scss";
 import CustomButton from "Commons/CustomButton";
 import axios from "axios";
+import apiEndPoint from "./../../../EndPoint/index";
 
 const RegisterPage = () => {
-  const [OTPInput, setOTPInput] = useState("");
-  const [isOTPCorrect, setIsOTPCorrect] = useState(false);
   const [emailInput, setEmailInput] = useState("");
   const [verified, setVerified] = useState(false);
 
-  const onOTPChange = (e) => {
-    setOTPInput(e.currentTarget.value);
-    if (e.currentTarget.value.length === 6) console.log(e.currentTarget.value);
-  };
-
   const generateOTP = async () => {
-    const res = await axios.post("http://localhost:5000/api/auth/createOtp", {
+    const res = await axios.post(`${apiEndPoint}api/auth/createOtp`, {
       Email: emailInput,
     });
     console.log(res);
   };
 
   const checkOTP = async (otp) => {
-    const res = await axios.post("http://localhost:5000/api/auth/verifyOtp", {
+    const res = await axios.post(`${apiEndPoint}api/auth/verifyOtp`, {
       Email: emailInput,
       Otp: otp,
     });
@@ -31,10 +25,7 @@ const RegisterPage = () => {
   };
 
   const onFinish = async (values) => {
-    const res = await axios.post(
-      "http://localhost:5000/api/auth/register",
-      values
-    );
+    const res = await axios.post(`${apiEndPoint}api/auth/register`, values);
     console.log({ res });
   };
 

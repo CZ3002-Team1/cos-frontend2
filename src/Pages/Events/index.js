@@ -4,6 +4,8 @@ import axios from "axios";
 import EventsBox from "./EventsBox/index";
 import { Header1 } from "Styles/Typography";
 
+import apiEndPoint from "../../EndPoint";
+
 import "./style.scss";
 
 const EventsPage = () => {
@@ -13,7 +15,7 @@ const EventsPage = () => {
   useEffect(() => {
     const getData = async () => {
       await axios
-        .get("http://localhost:5000/api/event")
+        .get(`${apiEndPoint}api/event`)
         .then((res) => {
           console.log(res.data.data);
           setDisplayData(res.data.data);

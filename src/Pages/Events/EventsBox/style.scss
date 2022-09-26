@@ -4,7 +4,7 @@
 .events-box {
   width: rem-calc(500);
   height: rem-calc(750);
-  margin: rem-calc(50);
+  margin: rem-calc(40) rem-calc(50) rem-calc(40) 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

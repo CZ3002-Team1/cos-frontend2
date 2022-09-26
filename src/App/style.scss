@@ -6,8 +6,7 @@
 
   width: 100vw;
   overflow-x: hidden;
-  overflow-y: scroll;
-  padding: rem-calc(100) rem-calc(200);
+  padding: rem-calc(100) rem-calc(100);
 }
 
 @media only screen and (max-width: 600px) {

@@ -8,12 +8,14 @@ import apiEndPoint from "./../../../EndPoint/index";
 const RegisterPage = () => {
   const [emailInput, setEmailInput] = useState("");
   const [verified, setVerified] = useState(false);
+  const [getOTP, setGetOTP] = useState({});
 
   const generateOTP = async () => {
     const res = await axios.post(`${apiEndPoint}api/auth/createOtp`, {
       Email: emailInput,
     });
-    console.log(res);
+    console.log(res.data);
+    setGetOTP(res.data);
   };
 
   const checkOTP = async (otp) => {
@@ -77,7 +79,10 @@ const RegisterPage = () => {
               onClick={generateOTP}
             >
               Generate OTP
-            </CustomButton>
+            </CustomButton>{" "}
+            <span style={{ color: "red" }}>
+              {getOTP.message ? getOTP.message : ""}
+            </span>
           </Form.Item>
 
           <Form.Item
@@ -105,12 +110,7 @@ const RegisterPage = () => {
               }),
             ]}
           >
-            <Input
-              addonBefore="OTP"
-              maxLength={6}
-              onChange={onOTPChange}
-              disabled={verified}
-            />
+            <Input addonBefore="OTP" maxLength={6} disabled={verified} />
           </Form.Item>
 
           <Form.Item

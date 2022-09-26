@@ -96,7 +96,7 @@ const RegisterPage = () => {
               },
               () => ({
                 async validator(_, value) {
-                  if (value.length === 6) {
+                  if (value && value.length === 6) {
                     if (verified) return Promise.resolve();
                     const res = await checkOTP(value);
                     if (res.data.success) {

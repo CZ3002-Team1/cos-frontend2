@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import App from "../App";
 import EventsPage from "../Pages/Events";
+import EventsBox from "../Pages/Events/EventsBox";
 import LandingPage from "../Pages/General/LandingPage";
 import ShopPage from "../Pages/MerchandiseShop";
 import BuyerDashboardPage from "./../Pages/General/DashboardPage/index";
@@ -16,6 +17,7 @@ const MainNavigation = () => {
         <Route path="events" element={<EventsPage />} />
         <Route path="shop" element={<ShopPage />} />
         <Route path="index-swap" element={<IndexSwapPage />} />
+        <Route path="events-box" element={<EventsBox />} />
       </Route>
     </Routes>
   );

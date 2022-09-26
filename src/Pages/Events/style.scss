@@ -1,0 +1,11 @@
+@import "GlobalStyles/color.scss";
+@import "GlobalStyles/spacing.scss";
+
+.events-page {
+  &__events-wrapper {
+    display: flex;
+    direction: row;
+    flex-wrap: wrap;
+    border: solid black 5px;
+  }
+}

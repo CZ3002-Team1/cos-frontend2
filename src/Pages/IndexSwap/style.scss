@@ -1,0 +1,16 @@
+@import "GlobalStyles/color.scss";
+@import "GlobalStyles/spacing.scss";
+
+.indexswap-page {
+  margin: rem-calc(40);
+  &__title {
+    margin-bottom: rem-calc(40);
+  }
+  &__filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: rem-calc(40);
+  }
+  &__table-wrapper {
+  }
+}

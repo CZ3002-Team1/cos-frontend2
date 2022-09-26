@@ -6,24 +6,16 @@ import SearchBox from "./../../Commons/SearchBox/index";
 
 import "./style.scss";
 import { Header1 } from "Styles/Typography";
-const IndexSwapPage = () => {
-  const dummyData = [
-    {
-      StudentName: "string",
-      ModuleName: "string",
-      ModuleCode: "string",
-      HaveIndex: "string",
-      WantIndex: "string",
-      PhoneNumber: "string",
-      TeleHandle: "string",
-    },
-  ];
+import { Button } from "antd";
+import IndexSwapForm from "./IndesSwapForm";
 
+const IndexSwapPage = () => {
   const [moduleQuery, setModuleQuery] = useState("");
   const [haveIndexQuery, setHaveIndexQuery] = useState("");
   const [wantIndexQuery, setWantIndexQuery] = useState("");
   const [data, setData] = useState([]);
   const [displayData, setDisplayData] = useState([]);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const handleModuleSearch = (query) => {
     setModuleQuery(query);
@@ -33,6 +25,16 @@ const IndexSwapPage = () => {
   };
   const handleWantIndexSearch = (query) => {
     setWantIndexQuery(query);
+  };
+
+  const handleFormSubmit = async (values) => {
+    await axios
+      .post("http://localhost:5000/api/indexSwap", values)
+      .then((res) => {
+        console.log(res);
+        setData([...data, values]);
+        setDisplayData([...data, values]);
+      });
   };
 
   useEffect(() => {
@@ -45,8 +47,6 @@ const IndexSwapPage = () => {
         })
         .catch((err) => {
           alert(err.message);
-          setDisplayData(dummyData);
-          setData(dummyData);
         });
     };
     getData();
@@ -84,7 +84,6 @@ const IndexSwapPage = () => {
           value={moduleQuery}
           onChange={handleModuleSearch}
         />
-
         <SearchBox
           title={"Current Index"}
           value={haveIndexQuery}
@@ -95,10 +94,18 @@ const IndexSwapPage = () => {
           value={wantIndexQuery}
           onChange={handleWantIndexSearch}
         />
+        <Button type="danger" onClick={() => setIsFormOpen(true)}>
+          Add Request
+        </Button>
       </div>
       <div className="indexswap-page__table-wrapper">
         <IndexSwapTable data={displayData} />
       </div>
+      <IndexSwapForm
+        isOpen={isFormOpen}
+        onCancel={() => setIsFormOpen(false)}
+        onSubmit={handleFormSubmit}
+      />
     </div>
   );
 };

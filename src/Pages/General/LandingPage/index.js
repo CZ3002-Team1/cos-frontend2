@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import _ from "lodash";
 
 //* Styles
@@ -6,23 +7,23 @@ import "./style.scss";
 
 //* Components
 import { Header1, Body1 } from "Styles/Typography";
-
-//* Assets
-import landingPageBackround from "./Assets/landingPageBackground.jpg";
-import { Button } from "antd";
 import CustomButton from "Commons/CustomButton";
 
 export default function LandingPage() {
+  const navigate = useNavigate();
   return (
     <div className="homepage">
       <div className="homepage__left">
         <div className="homepage__left__text">
           <Header1>Welcome to COS</Header1>
-          <br />
+
           <Body1>A one-stop solution for SCSE member</Body1>
-          <br />
-          <CustomButton>Log In</CustomButton>
-          <CustomButton>Sign Up</CustomButton>
+        </div>
+        <div className="homepage__left__button">
+          <CustomButton onClick={() => navigate("/login")}>Log In</CustomButton>
+          <CustomButton onClick={() => navigate("/register")}>
+            Register
+          </CustomButton>
         </div>
         {/* {isLoggedIn && !isRegistered ? (
           <CustomButton

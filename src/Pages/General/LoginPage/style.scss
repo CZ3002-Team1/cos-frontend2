@@ -1,0 +1,10 @@
+@import "GlobalStyles/color.scss";
+@import "GlobalStyles/spacing.scss";
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  &__form-wrapper {
+    width: 30%;
+  }
+}

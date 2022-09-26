@@ -1,0 +1,10 @@
+@import "GlobalStyles/color.scss";
+@import "GlobalStyles/spacing.scss";
+
+.register-page {
+  display: flex;
+  justify-content: center;
+  &__form-wrapper {
+    width: 40%;
+  }
+}

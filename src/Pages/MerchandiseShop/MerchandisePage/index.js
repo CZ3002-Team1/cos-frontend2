@@ -4,10 +4,10 @@ import axios from "axios";
 
 import apiEndPoint from "../../../ApiEndPoint";
 
+import { Form, InputNumber, Radio } from "antd";
 import { Header1, Body1, Body2 } from "Styles/Typography";
 
 import "./style.scss";
-import { Form, InputNumber, Radio } from "antd";
 
 const MerchandisePage = () => {
   const { itemId } = useParams();

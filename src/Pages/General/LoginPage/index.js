@@ -1,21 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Input } from "antd";
-import axios from "axios";
-import jwtDecode from "jwt-decode";
-import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import CustomButton from "Commons/CustomButton";
-import apiEndPoint from "../../../ApiEndPoint";
 
 import { getToken } from "../UserReducer";
 
 import "./style.scss";
-import { store } from "../../../App/Redux/store";
 const LoginPage = () => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
-
-  console.log(store.getState());
+  const navigate = useNavigate();
 
   const onFinish = () => {
     form.validateFields().then((values) => {

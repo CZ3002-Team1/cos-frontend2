@@ -19,6 +19,9 @@
         max-width: rem-calc(100);
       }
     }
+    &__selections {
+      display: flex;
+    }
   }
 
   &__right {

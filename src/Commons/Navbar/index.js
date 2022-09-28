@@ -18,9 +18,9 @@ export default function Navbar() {
   // const dispatch = useDispatch();
   // const { pathname } = useLocation();
   const navigate = useNavigate();
-  // const { isLoggedIn, isRegistered, userType } = useSelector(
-  //   (state) => state.userReducer
-  // );
+  const { isLoggedIn } = useSelector(
+    (state) => state.persistedReducer.UserReducer
+  );
   // const { name, personal_email } = useSelector(
   //   (state) => state.userReducer.userData
   // );
@@ -44,10 +44,13 @@ export default function Navbar() {
         >
           <img src={SCSEClubLogo} className="navbar__left__logo__icon" />
         </div>
-
-        <NavbarSelection target="/events">Events</NavbarSelection>
-        <NavbarSelection target="/shop">Shop</NavbarSelection>
-        <NavbarSelection target="index-swap">Index Swap</NavbarSelection>
+        {isLoggedIn && (
+          <div className="navbar__left__selections">
+            <NavbarSelection target="/events">Events</NavbarSelection>
+            <NavbarSelection target="/shop">Shop</NavbarSelection>
+            <NavbarSelection target="index-swap">Index Swap</NavbarSelection>
+          </div>
+        )}
       </div>
 
       {/* <div className="navbar__right">

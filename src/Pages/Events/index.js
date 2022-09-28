@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 import EventsBox from "./EventsBox/index";
 import { Header1 } from "Styles/Typography";
@@ -11,6 +12,9 @@ import "./style.scss";
 const EventsPage = () => {
   const [data, setData] = useState([]);
   const [displayData, setDisplayData] = useState([]);
+  const { userInfo } = useSelector(
+    (state) => state.persistedReducer.UserReducer
+  );
 
   useEffect(() => {
     const getData = async () => {
@@ -33,6 +37,8 @@ const EventsPage = () => {
   return (
     <div className="events-page">
       <div className="events-page__title">
+        <Header1>Welcome Back {userInfo.Name}</Header1>
+        <br />
         <Header1>Events</Header1>
       </div>
       <div className="events-page__events-wrapper">

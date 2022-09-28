@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import App from "../App";
 import EventsPage from "../Pages/Events";
 import EventsBox from "../Pages/Events/EventsBox";
@@ -8,6 +14,7 @@ import LandingPage from "../Pages/General/LandingPage";
 import LoginPage from "../Pages/General/LoginPage";
 import RegisterPage from "../Pages/General/RegisterPage";
 import ShopPage from "../Pages/MerchandiseShop";
+import MerchandisePage from "../Pages/MerchandiseShop/MerchandisePage";
 import BuyerDashboardPage from "./../Pages/General/DashboardPage/index";
 import IndexSwapPage from "./../Pages/IndexSwap/index";
 
@@ -19,8 +26,10 @@ const MainNavigation = () => {
     (state) => state.persistedReducer.UserReducer
   );
 
+  const location = useLocation();
+
   useEffect(() => {
-    if (isLoggedIn) navigate("/events");
+    if (isLoggedIn) navigate(location.pathname);
   }, [isLoggedIn]);
 
   return (
@@ -36,11 +45,29 @@ const MainNavigation = () => {
             </UserRoute>
           }
         />
+        <Route path="shop">
+          <Route
+            index
+            element={
+              <UserRoute>
+                <ShopPage />
+              </UserRoute>
+            }
+          />
+          <Route
+            path=":itemId"
+            element={
+              <UserRoute>
+                <MerchandisePage />
+              </UserRoute>
+            }
+          />
+        </Route>
         <Route
-          path="shop"
+          path="shop/:itemId"
           element={
             <UserRoute>
-              <ShopPage />
+              <MerchandisePage />
             </UserRoute>
           }
         />

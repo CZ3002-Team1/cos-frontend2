@@ -3,7 +3,7 @@ import { Form, Input } from "antd";
 import "./style.scss";
 import CustomButton from "Commons/CustomButton";
 import axios from "axios";
-import apiEndPoint from "./../../../EndPoint/index";
+import apiEndPoint from "../../../ApiEndPoint";
 
 const RegisterPage = () => {
   const [emailInput, setEmailInput] = useState("");

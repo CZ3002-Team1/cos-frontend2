@@ -79,4 +79,5 @@ module.exports = {
       GlobalStyles: path.resolve(__dirname, "./src/Styles/Global"),
     },
   },
+  devtool: "source-map",
 };

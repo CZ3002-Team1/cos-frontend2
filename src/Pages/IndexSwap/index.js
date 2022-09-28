@@ -8,7 +8,7 @@ import "./style.scss";
 import { Header1 } from "Styles/Typography";
 import { Button } from "antd";
 import IndexSwapForm from "./IndesSwapForm";
-import apiEndPoint from "./../../EndPoint/index";
+import apiEndPoint from "./../../ApiEndPoint/index";
 
 const IndexSwapPage = () => {
   const [moduleQuery, setModuleQuery] = useState("");

@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input } from "antd";
 import axios from "axios";
+import jwtDecode from "jwt-decode";
+import { useDispatch } from "react-redux";
 
 import CustomButton from "Commons/CustomButton";
-import apiEndPoint from "./../../../EndPoint/index";
+import apiEndPoint from "../../../ApiEndPoint";
+
+import { getToken } from "../UserReducer";
 
 import "./style.scss";
+import { store } from "../../../App/Redux/store";
 const LoginPage = () => {
-  const onFinish = async (values) => {
-    const res = await axios.post(`${apiEndPoint}api/auth/login`, values);
-    console.log(res);
+  const [form] = Form.useForm();
+  const dispatch = useDispatch();
+
+  console.log(store.getState());
+
+  const onFinish = () => {
+    form.validateFields().then((values) => {
+      form.resetFields();
+      console.log(values);
+      dispatch(getToken(values));
+    });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -24,8 +37,8 @@ const LoginPage = () => {
           initialValues={{
             remember: true,
           }}
-          onFinish={onFinish}
           onFinishFailed={onFinishFailed}
+          form={form}
           requiredMark={false}
           labelCol={{
             span: 3,
@@ -52,7 +65,6 @@ const LoginPage = () => {
           >
             <Input addonBefore="Email" />
           </Form.Item>
-
           <Form.Item
             name="Password"
             rules={[
@@ -64,14 +76,13 @@ const LoginPage = () => {
           >
             <Input.Password addonBefore="Password" />
           </Form.Item>
-
           <Form.Item
             wrapperCol={{
               offset: 8,
               span: 16,
             }}
           >
-            <CustomButton type="primary" htmlType="submit">
+            <CustomButton type="primary" onClick={onFinish}>
               Submit
             </CustomButton>
           </Form.Item>

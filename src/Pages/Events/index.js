@@ -4,7 +4,7 @@ import axios from "axios";
 import EventsBox from "./EventsBox/index";
 import { Header1 } from "Styles/Typography";
 
-import apiEndPoint from "../../EndPoint";
+import apiEndPoint from "../../ApiEndPoint";
 
 import "./style.scss";
 

@@ -30,7 +30,7 @@ const EventsBox = ({ data }) => {
         <div className="events-box__bottom">
           <Header2>{data.Name}</Header2>
           <Body2>
-            {new Date(data.StartDate).toDateString()} -
+            {new Date(data.StartDate).toDateString()} -{" "}
             {new Date(data.EndDate).toDateString()}
           </Body2>
         </div>

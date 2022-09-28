@@ -11,10 +11,13 @@ const EventDetailModal = ({ data, isOpen, handleClose }) => {
       onCancel={handleClose}
     >
       <Body2>
-        Event Date: {data.StartDate} - {data.EndDate}
+        Event Date: {new Date(data.StartDate).toDateString()} -{" "}
+        {new Date(data.EndDate).toDateString()}
       </Body2>
       <br />
       <Body2>Time: {data.Time}</Body2>
+      <br />
+      <Body2>Event Details:</Body2>
       <br />
       <Body2>{data.Description}</Body2>
     </Modal>

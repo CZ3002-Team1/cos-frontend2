@@ -22,6 +22,7 @@ const MainNavigation = () => {
   useEffect(() => {
     if (isLoggedIn) navigate("/events");
   }, [isLoggedIn]);
+
   return (
     <Routes>
       <Route path="/" element={<App />}>

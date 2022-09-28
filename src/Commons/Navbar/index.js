@@ -40,7 +40,7 @@ export default function Navbar() {
         <div
           className="navbar__left__logo"
           onClick={() => {
-            navigate("/");
+            navigate("/Events");
           }}
         >
           <img src={SCSEClubLogo} className="navbar__left__logo__icon" />

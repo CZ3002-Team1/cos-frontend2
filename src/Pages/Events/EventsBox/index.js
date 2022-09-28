@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Body2, Header2 } from "Styles/Typography/index";
 
 import "./style.scss";
@@ -7,8 +7,6 @@ import EventDetailModal from "./../EventDetailModal/index";
 const EventsBox = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(typeof data.EndDate);
-  console.log(new Date(data.EndDate));
   const showModal = () => {
     setIsOpen(true);
   };
@@ -16,10 +14,6 @@ const EventsBox = ({ data }) => {
   const closeModal = () => {
     setIsOpen(false);
   };
-
-  useEffect(() => {
-    console.log({ isOpen });
-  }, [isOpen]);
 
   return (
     <div>

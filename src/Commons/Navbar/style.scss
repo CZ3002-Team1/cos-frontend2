@@ -29,37 +29,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-
-    &__profile {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      transition: all 0.3s ease-in-out;
-      &:hover {
-        transition: all 0.3s ease-in-out;
-        .navbar__right__profile__icon {
-          path {
-            transition: all 0.3s ease-in-out;
-            stroke: $brand__brightred !important;
-          }
-        }
-        .navbar__right__profile__name {
-          transition: all 0.3s ease-in-out;
-          color: $brand__brightred;
-        }
-      }
-
-      &__name {
-        margin-left: rem-calc(10);
-        padding-right: rem-calc(80);
-      }
-    }
     &__logout {
       transition: all 0.3s ease-in-out;
+      cursor: pointer;
       &:hover {
         path {
           transition: all 0.3s ease-in-out;
-          stroke: $brand__brightred !important;
+          stroke: red !important;
         }
       }
     }

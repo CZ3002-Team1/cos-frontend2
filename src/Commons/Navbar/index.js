@@ -1,10 +1,11 @@
+import React from "react";
 import _ from "lodash";
-import React, { useEffect, useRef } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-// import { handleUserLogout, getUserAction, refreshToken } from '../../Pages/General/UserReducer/Actions';
+
+import { logOut } from "../../Pages/General/UserReducer";
+
 import "./style.scss";
-import { Body1 } from "Styles/Typography";
 
 //* Assets
 import SCSEClubLogo from "./Assets/SCSE.png";
@@ -15,7 +16,7 @@ import NavbarSelection from "./components/NavbarSelection";
 // import { ENUM_USER_TYPES } from "../../App/Constant";
 
 export default function Navbar() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const { pathname } = useLocation();
   const navigate = useNavigate();
   const { isLoggedIn } = useSelector(
@@ -53,27 +54,14 @@ export default function Navbar() {
         )}
       </div>
 
-      {/* <div className="navbar__right">
-        {(isRegistered || (isLoggedIn && pathname === "/login")) && (
-          <>
-            <Link to="/profile" className="navbar__right__profile">
-              <UserCircle className="navbar__right__profile__icon" />
-              TODO: change to seller name
-              <Body1 className="navbar__right__profile__name">
-                {userType === ENUM_USER_TYPES.buyer
-                  ? _.first(_.words(name))
-                  : _.first(_.split(personal_email, "@"))}
-              </Body1>
-            </Link>
-            <Log_Out
-              className="navbar__right__logout"
-              onClick={() => {
-                dispatch(handleUserLogout({ navigate }));
-              }}
-            />
-          </>
+      <div className="navbar__right">
+        {isLoggedIn && (
+          <Log_Out
+            className="navbar__right__logout"
+            onClick={() => dispatch(logOut())}
+          />
         )}
-      </div> */}
+      </div>
     </div>
   );
 }

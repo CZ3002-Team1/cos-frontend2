@@ -1,42 +1,24 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import {
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+
 import App from "../App";
-import EventsPage from "../Pages/Events";
-import EventsBox from "../Pages/Events/EventsBox";
-import LandingPage from "../Pages/General/LandingPage";
-import LoginPage from "../Pages/General/LoginPage";
-import RegisterPage from "../Pages/General/RegisterPage";
-import ShopPage from "../Pages/MerchandiseShop";
-import MerchandisePage from "../Pages/MerchandiseShop/MerchandisePage";
-import BuyerDashboardPage from "./../Pages/General/DashboardPage/index";
-import IndexSwapPage from "./../Pages/IndexSwap/index";
+import EventsPage from "Pages/Events";
+import LandingPage from "Pages/General/LandingPage";
+import LoginPage from "Pages/General/LoginPage";
+import RegisterPage from "Pages/General/RegisterPage";
+import ShopPage from "Pages/MerchandiseShop";
+import MerchandisePage from "Pages/MerchandiseShop/MerchandisePage";
+import IndexSwapPage from "Pages/IndexSwap/index";
 
 import { UserRoute } from "./PrivateRoute";
 
 const MainNavigation = () => {
-  const navigate = useNavigate();
-  const { isLoggedIn } = useSelector(
-    (state) => state.persistedReducer.UserReducer
-  );
-
-  const location = useLocation();
-
-  useEffect(() => {
-    if (isLoggedIn) navigate(location.pathname);
-  }, [isLoggedIn]);
-
   return (
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<LandingPage />} />
-        <Route path="dashboard" element={<BuyerDashboardPage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
         <Route
           path="events"
           element={
@@ -79,8 +61,6 @@ const MainNavigation = () => {
             </UserRoute>
           }
         />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
       </Route>
     </Routes>
   );

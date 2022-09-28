@@ -1,29 +1,38 @@
-import React from "react";
-import { Form, Input } from "antd";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
+import { Form, Input } from "antd";
 import CustomButton from "Commons/CustomButton";
 
 import { getToken } from "../UserReducer";
 
 import "./style.scss";
 const LoginPage = () => {
-  const [form] = Form.useForm();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [form] = Form.useForm();
+
+  const { isLoggedIn } = useSelector(
+    (state) => state.persistedReducer.UserReducer
+  );
 
   const onFinish = () => {
     form.validateFields().then((values) => {
       form.resetFields();
-      console.log(values);
-      dispatch(getToken(values));
+      dispatch(getToken(values)).then(({ payload }) => {
+        if (payload.success) navigate("/events");
+      });
     });
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
+  useEffect(() => {
+    if (isLoggedIn) navigate("/events");
+  }, [isLoggedIn]);
 
   return (
     <div className="login-page">

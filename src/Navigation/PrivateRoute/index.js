@@ -8,13 +8,12 @@ export const UserRoute = ({ children }) => {
   );
 
   if (isLoggedIn) return children;
-  else
-    return (
-      <Navigate
-        to={{
-          pathname: "/",
-          replace: true,
-        }}
-      />
-    );
+  return (
+    <Navigate
+      to={{
+        pathname: "/",
+        replace: true,
+      }}
+    />
+  );
 };

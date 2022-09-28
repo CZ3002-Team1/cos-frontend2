@@ -1,15 +1,14 @@
 import React from "react";
-import _ from "lodash";
-import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import _ from "lodash";
 
-import { logOut } from "../../Pages/General/UserReducer";
+import { logOut } from "Pages/General/UserReducer";
 
 import "./style.scss";
 
 //* Assets
 import SCSEClubLogo from "./Assets/SCSE.png";
-import UserCircle from "./Assets/UserCircle.svg";
 import Log_Out from "./Assets/Log_Out.svg";
 import NavbarSelection from "./components/NavbarSelection";
 
@@ -58,7 +57,10 @@ export default function Navbar() {
         {isLoggedIn && (
           <Log_Out
             className="navbar__right__logout"
-            onClick={() => dispatch(logOut())}
+            onClick={() => {
+              dispatch(logOut());
+              navigate("/");
+            }}
           />
         )}
       </div>

@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import _ from "lodash";
-
-//* Styles
-import "./style.scss";
 
 //* Components
 import { Header1, Body1 } from "Styles/Typography";
 import CustomButton from "Commons/CustomButton";
 
+//* Styles
+import "./style.scss";
+
 export default function LandingPage() {
   const navigate = useNavigate();
+
+  const { isLoggedIn } = useSelector(
+    (state) => state.persistedReducer.UserReducer
+  );
+
+  useEffect(() => {
+    if (isLoggedIn) navigate("/events");
+  }, [isLoggedIn]);
+
   return (
     <div className="homepage">
       <div className="homepage__left">

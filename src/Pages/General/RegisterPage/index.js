@@ -1,14 +1,28 @@
-import React, { useState } from "react";
-import { Form, Input } from "antd";
-import "./style.scss";
-import CustomButton from "Commons/CustomButton";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
+import { Form, Input } from "antd";
+import CustomButton from "Commons/CustomButton";
+
 import apiEndPoint from "../../../ApiEndPoint";
+
+import "./style.scss";
 
 const RegisterPage = () => {
   const [emailInput, setEmailInput] = useState("");
   const [verified, setVerified] = useState(false);
   const [getOTP, setGetOTP] = useState({});
+  const navigate = useNavigate();
+
+  const { isLoggedIn } = useSelector(
+    (state) => state.persistedReducer.UserReducer
+  );
+
+  useEffect(() => {
+    if (isLoggedIn) navigate("/events");
+  }, [isLoggedIn]);
 
   const generateOTP = async () => {
     const res = await axios.post(`${apiEndPoint}api/auth/createOtp`, {

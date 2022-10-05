@@ -5,18 +5,18 @@ import apiEndPoint from "../../../ApiEndPoint";
 let lastId = 0;
 const cartSlice = createSlice({
   name: "cartReducer",
-  initialState: { items: [] },
+  initialState: { Items: [] },
   reducers: {
     addItemToCart: (state, action) => {
       console.log({ action });
-      state.items.push({
+      state.Items.push({
         ...action.payload,
         orderId: ++lastId,
       });
     },
     removeItemFromCart: (state, action) => {
       console.log({ removed: action.payload.orderId });
-      state.items = state.items.filter(
+      state.Items = state.Items.filter(
         (o) => o.orderId !== action.payload.orderId
       );
     },

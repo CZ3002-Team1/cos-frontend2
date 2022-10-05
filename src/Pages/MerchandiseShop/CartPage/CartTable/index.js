@@ -22,7 +22,7 @@ const CartTable = ({ data }) => {
       (total, item) => total + item.Price * item.Quantity,
       0
     );
-    return <Body1 className="bottom">Total Price: ${sum}</Body1>;
+    return <Body1 className="bottom">Total Price: ${sum.toFixed(2)}</Body1>;
   };
 
   const columns = [

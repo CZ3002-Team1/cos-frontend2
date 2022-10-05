@@ -39,7 +39,7 @@ export default function Navbar() {
         <div
           className="navbar__left__logo"
           onClick={() => {
-            navigate("/Events");
+            navigate("/events");
           }}
         >
           <img src={SCSEClubLogo} className="navbar__left__logo__icon" />
@@ -58,7 +58,7 @@ export default function Navbar() {
           <Log_Out
             className="navbar__right__logout"
             onClick={() => {
-              dispatch(logOut());
+              dispatch({ type: "USER_LOGOUT", payload: {} });
               navigate("/");
             }}
           />

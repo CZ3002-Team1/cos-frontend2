@@ -24,7 +24,7 @@ const userSlice = createSlice({
     isLoggedIn: false,
   },
   reducers: {
-    logOut(state) {
+    logOut: (state) => {
       state.token = "";
       state.userInfo = {};
       state.isLoggedIn = false;

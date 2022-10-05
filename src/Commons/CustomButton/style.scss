@@ -6,4 +6,9 @@
   background-color: $blumine;
   border-radius: 10px;
   border: none;
+  margin: 5px;
+  &:hover {
+    background-color: $jungle_mist;
+    color: white;
+  }
 }

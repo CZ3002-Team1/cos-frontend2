@@ -11,6 +11,7 @@ import MerchandisePage from "Pages/MerchandiseShop/MerchandisePage";
 import IndexSwapPage from "Pages/IndexSwap/index";
 
 import { UserRoute } from "./PrivateRoute";
+import CartPage from "./../Pages/MerchandiseShop/CartPage/index";
 
 const MainNavigation = () => {
   return (
@@ -46,10 +47,10 @@ const MainNavigation = () => {
           />
         </Route>
         <Route
-          path="shop/:itemId"
+          path="cart"
           element={
             <UserRoute>
-              <MerchandisePage />
+              <CartPage />
             </UserRoute>
           }
         />

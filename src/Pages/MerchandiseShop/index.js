@@ -7,10 +7,13 @@ import { Header1 } from "Styles/Typography";
 import apiEndPoint from "../../ApiEndPoint";
 
 import "./style.scss";
+import CustomButton from "Commons/CustomButton";
+import { useNavigate } from "react-router-dom";
 
 const ShopPage = () => {
   const [data, setData] = useState([]);
   const [displayData, setDisplayData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
@@ -31,6 +34,10 @@ const ShopPage = () => {
     <div className="shop-page">
       <div className="shop-page__title">
         <Header1>Merchandise Shop</Header1>
+        <div className="shop-page__title__buttons">
+          <CustomButton onClick={() => navigate("/Cart")}>My Cart</CustomButton>
+          <CustomButton>My Orders</CustomButton>
+        </div>
       </div>
       <div className="shop-page__merch-wrapper">
         {displayData ? (

@@ -2,22 +2,31 @@
 @import "GlobalStyles/spacing.scss";
 
 .merch-page {
-  display: flex;
-  justify-content: space-evenly;
-  &__left {
-    width: 30%;
-    border: black solid 10px;
-    &__img {
-      max-width: 100%;
+  margin: rem-calc(40);
+
+  &__title {
+    margin-bottom: rem-calc(50);
+    &__buttons {
+      float: right;
     }
   }
-  &__right {
-    width: 60%;
-    &__color {
-      height: rem-calc(50);
-      width: rem-calc(50);
-      &:checked {
-        border: solid 10px black !important;
+  &__body {
+    display: flex;
+    justify-content: space-evenly;
+    &__left {
+      width: 30%;
+      &__img {
+        max-width: 100%;
+      }
+    }
+    &__right {
+      width: 60%;
+      &__color {
+        height: rem-calc(50);
+        width: rem-calc(50);
+        &:checked {
+          border: solid 10px black !important;
+        }
       }
     }
   }

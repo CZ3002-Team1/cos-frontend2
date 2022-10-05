@@ -6,7 +6,7 @@ export const UserRoute = ({ children }) => {
   const { isLoggedIn } = useSelector(
     (state) => state.persistedReducer.UserReducer
   );
-
+  console.log({ isLoggedIn });
   if (isLoggedIn) return children;
   return (
     <Navigate

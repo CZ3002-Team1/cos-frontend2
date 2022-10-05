@@ -2,6 +2,9 @@
 @import "GlobalStyles/spacing.scss";
 
 .merch-box {
+  &:hover {
+    transform: scale(1.05);
+  }
   width: rem-calc(500);
   height: rem-calc(750);
   margin: rem-calc(40) rem-calc(50) rem-calc(40) 0;
@@ -12,6 +15,8 @@
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   cursor: pointer;
+  transition: transform 0.5s ease-in-out;
+
   &__top {
     height: 67%;
     max-width: 100%;

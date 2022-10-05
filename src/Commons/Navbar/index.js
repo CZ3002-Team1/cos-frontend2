@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import _ from "lodash";
 import { LogoutOutlined } from "@ant-design/icons";
 import "./style.scss";
@@ -15,6 +15,7 @@ export default function Navbar() {
   const { isLoggedIn } = useSelector(
     (state) => state.persistedReducer.UserReducer
   );
+  const { pathname } = useLocation();
 
   return (
     <div className="navbar">
@@ -29,9 +30,15 @@ export default function Navbar() {
         </div>
         {isLoggedIn && (
           <div className="navbar__left__selections">
-            <NavbarSelection target="/events">Events</NavbarSelection>
-            <NavbarSelection target="/shop">Shop</NavbarSelection>
-            <NavbarSelection target="/index-swap">Index Swap</NavbarSelection>
+            <NavbarSelection target="/events" currentLocation={pathname}>
+              Events
+            </NavbarSelection>
+            <NavbarSelection target="/shop" currentLocation={pathname}>
+              Shop
+            </NavbarSelection>
+            <NavbarSelection target="/index-swap" currentLocation={pathname}>
+              Index Swap
+            </NavbarSelection>
           </div>
         )}
       </div>

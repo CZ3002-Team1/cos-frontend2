@@ -9,12 +9,17 @@
   align-items: center;
   justify-content: space-between;
   background-color: $jungle_mist;
+  padding-left: rem-calc(50);
   &__left {
     display: flex;
     align-items: center;
+
     &__logo {
       cursor: pointer;
-      padding-left: rem-calc(50);
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        transform: scale(1.1);
+      }
       &__icon {
         max-width: rem-calc(100);
       }

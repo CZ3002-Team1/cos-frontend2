@@ -1,9 +1,14 @@
 import { combineReducers } from "redux";
 
 import UserReducer from "../../../Pages/General/UserReducer";
+import IndexSwapReducer from "../../../Pages/IndexSwap/IndexSwapReducer";
 import CartReducer from "../../../Pages/MerchandiseShop/CartReducer";
 
-const appReducers = combineReducers({ UserReducer, CartReducer });
+const appReducers = combineReducers({
+  UserReducer,
+  CartReducer,
+  IndexSwapReducer,
+});
 
 const rootReducer = (state, action) => {
   if (action.type === "USER_LOGOUT") {

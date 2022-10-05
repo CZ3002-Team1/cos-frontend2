@@ -1,8 +1,13 @@
-import { Form, Modal, Input } from "antd";
 import React from "react";
+import { useSelector } from "react-redux";
+
+import { Form, Modal, Input } from "antd";
 
 const IndexSwapForm = ({ isOpen, onCancel, onSubmit }) => {
   const [form] = Form.useForm();
+  const { userInfo } = useSelector(
+    (state) => state.persistedReducer.UserReducer
+  );
   return (
     <Modal
       open={isOpen}
@@ -16,7 +21,7 @@ const IndexSwapForm = ({ isOpen, onCancel, onSubmit }) => {
           .validateFields()
           .then((values) => {
             form.resetFields();
-            onSubmit(values);
+            onSubmit({ ...values, Email: userInfo.Email });
             onCancel();
           })
           .catch((info) => {

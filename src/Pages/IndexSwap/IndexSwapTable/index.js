@@ -1,7 +1,9 @@
 import { Table } from "antd";
 import React from "react";
 
-const IndexSwapTable = ({ data }) => {
+import { DeleteOutlined } from "@ant-design/icons";
+
+const IndexSwapTable = ({ data, deleteAllowed, onDelete }) => {
   const columns = [
     {
       title: "Student Name",
@@ -37,6 +39,18 @@ const IndexSwapTable = ({ data }) => {
       title: "Telegram",
       dataIndex: "TeleHandle",
       key: "TeleHandle",
+    },
+    {
+      title: "",
+      key: "delete",
+      render: (record) =>
+        deleteAllowed && (
+          <DeleteOutlined
+            className="cart-table__delete-icon"
+            alt="trash"
+            onClick={() => onDelete(record)}
+          />
+        ),
     },
   ];
   return <Table dataSource={data} columns={columns} />;

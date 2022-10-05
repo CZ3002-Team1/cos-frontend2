@@ -2,36 +2,19 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import _ from "lodash";
-
-import { logOut } from "Pages/General/UserReducer";
-
+import { LogoutOutlined } from "@ant-design/icons";
 import "./style.scss";
 
 //* Assets
 import SCSEClubLogo from "./Assets/SCSE.png";
-import Log_Out from "./Assets/Log_Out.svg";
 import NavbarSelection from "./components/NavbarSelection";
-
-// import { ENUM_USER_TYPES } from "../../App/Constant";
 
 export default function Navbar() {
   const dispatch = useDispatch();
-  // const { pathname } = useLocation();
   const navigate = useNavigate();
   const { isLoggedIn } = useSelector(
     (state) => state.persistedReducer.UserReducer
   );
-  // const { name, personal_email } = useSelector(
-  //   (state) => state.userReducer.userData
-  // );
-
-  // useEffect(() => {
-  //   if (!name) {
-  //     if (userType === ENUM_USER_TYPES.buyer) {
-  //       dispatch(getUserAction());
-  //     }
-  //   }
-  // }, [isRegistered]);
 
   return (
     <div className="navbar">
@@ -55,13 +38,15 @@ export default function Navbar() {
 
       <div className="navbar__right">
         {isLoggedIn && (
-          <Log_Out
-            className="navbar__right__logout"
-            onClick={() => {
-              dispatch({ type: "USER_LOGOUT", payload: {} });
-              navigate("/");
-            }}
-          />
+          <div className="navbar__right__logout" title="logout">
+            <LogoutOutlined
+              className="navbar__right__logout__icon"
+              onClick={() => {
+                dispatch({ type: "USER_LOGOUT", payload: {} });
+                navigate("/");
+              }}
+            />
+          </div>
         )}
       </div>
     </div>

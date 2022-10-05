@@ -33,7 +33,6 @@ const MerchandisePage = () => {
     const getData = async () => {
       const res = await axios.get(`${apiEndPoint}api/merch/${itemId}`);
       setData(res.data.data);
-      console.log(res.data.data);
     };
     getData();
   }, []);

@@ -16,7 +16,6 @@ const registerUser = createAsyncThunk(
   "userReducer/register",
   async (values) => {
     const res = await axios.post(`${apiEndPoint}api/auth/register`, values);
-    console.log(res);
     if (res.data.success === false) {
       alert("register fail");
     }

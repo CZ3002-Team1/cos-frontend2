@@ -27,7 +27,7 @@ const LoginPage = () => {
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    alert("Failed:", errorInfo);
   };
 
   useEffect(() => {

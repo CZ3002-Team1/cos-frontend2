@@ -11,7 +11,6 @@ import CustomButton from "Commons/CustomButton";
 import { useNavigate } from "react-router-dom";
 
 const ShopPage = () => {
-  const [data, setData] = useState([]);
   const [displayData, setDisplayData] = useState([]);
   const navigate = useNavigate();
 
@@ -20,9 +19,7 @@ const ShopPage = () => {
       await axios
         .get(`${apiEndPoint}api/merch`)
         .then((res) => {
-          console.log(res.data.data);
           setDisplayData(res.data.data);
-          setData(res.data.data);
         })
         .catch((err) => {
           alert(err.message);

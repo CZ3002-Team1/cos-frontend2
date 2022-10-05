@@ -21,7 +21,6 @@ const EventsPage = () => {
       await axios
         .get(`${apiEndPoint}api/event`)
         .then((res) => {
-          console.log(res.data.data);
           setDisplayData(res.data.data);
           setData(res.data.data);
         })

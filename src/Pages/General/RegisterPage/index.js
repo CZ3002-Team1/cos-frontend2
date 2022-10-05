@@ -43,15 +43,13 @@ const RegisterPage = () => {
   };
 
   const onFinish = async (values) => {
-    const res = await axios.post(`${apiEndPoint}api/auth/register`, values);
-    console.log({ res });
     dispatch(registerUser(values)).then(({ payload }) => {
       if (payload.success) navigate("/events");
     });
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    alert("Failed:", errorInfo);
   };
 
   return (

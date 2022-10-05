@@ -17,7 +17,6 @@ const CartTable = ({ data }) => {
   };
 
   const setFooter = (data) => {
-    console.log({ data });
     const sum = data.reduce(
       (total, item) => total + item.Price * item.Quantity,
       0
@@ -59,7 +58,6 @@ const CartTable = ({ data }) => {
     {
       title: "Total",
       render: (row) => {
-        console.log({ row });
         return <Body1>${(row.Price * row.Quantity).toFixed(2)}</Body1>;
       },
     },

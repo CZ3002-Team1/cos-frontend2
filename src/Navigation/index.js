@@ -9,17 +9,22 @@ import RegisterPage from "Pages/General/RegisterPage";
 import ShopPage from "Pages/MerchandiseShop";
 import MerchandisePage from "Pages/MerchandiseShop/MerchandisePage";
 import IndexSwapPage from "Pages/IndexSwap/index";
+import CartPage from "./../Pages/MerchandiseShop/CartPage/index";
+import PaymentSuccessfulPage from "../Pages/MerchandiseShop/PaymentSuccessfulPage";
+import PaymentFailPage from "../Pages/MerchandiseShop/PaymentFailPage";
 
 import { UserRoute } from "./PrivateRoute";
-import CartPage from "./../Pages/MerchandiseShop/CartPage/index";
 
 const MainNavigation = () => {
   return (
     <Routes>
       <Route path="/" element={<App />}>
+        {/* public page */}
         <Route index element={<LandingPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
+
+        {/* private route */}
         <Route
           path="events"
           element={
@@ -46,14 +51,33 @@ const MainNavigation = () => {
             }
           />
         </Route>
-        <Route
-          path="cart"
-          element={
-            <UserRoute>
-              <CartPage />
-            </UserRoute>
-          }
-        />
+        <Route path="cart">
+          <Route
+            index
+            element={
+              <UserRoute>
+                <CartPage />
+              </UserRoute>
+            }
+          />
+          <Route
+            path="success"
+            element={
+              <UserRoute>
+                <PaymentSuccessfulPage />
+              </UserRoute>
+            }
+          />
+          <Route
+            path="fail"
+            element={
+              <UserRoute>
+                <PaymentFailPage />
+              </UserRoute>
+            }
+          />
+        </Route>
+
         <Route
           path="index-swap"
           element={

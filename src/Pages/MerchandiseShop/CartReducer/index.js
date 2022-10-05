@@ -6,14 +6,12 @@ const cartSlice = createSlice({
   initialState: { Items: [] },
   reducers: {
     addItemToCart: (state, action) => {
-      console.log({ action });
       state.Items.push({
         ...action.payload,
         orderId: ++lastId,
       });
     },
     removeItemFromCart: (state, action) => {
-      console.log({ removed: action.payload.orderId });
       state.Items = state.Items.filter(
         (o) => o.orderId !== action.payload.orderId
       );

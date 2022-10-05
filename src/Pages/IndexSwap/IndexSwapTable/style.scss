@@ -1,0 +1,10 @@
+@import "GlobalStyles/color.scss";
+@import "GlobalStyles/spacing.scss";
+
+.indexswap-table {
+  &__filters {
+    display: flex;
+    justify-content: left;
+    margin-bottom: rem-calc(40);
+  }
+}

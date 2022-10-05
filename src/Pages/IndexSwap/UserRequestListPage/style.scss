@@ -8,9 +8,7 @@
     display: flex;
     justify-content: space-between;
   }
-  &__filters {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: rem-calc(40);
+  &__buttons {
+    margin-bottom: rem-calc(20);
   }
 }

@@ -3,7 +3,8 @@ import { Table } from "antd";
 
 import { DeleteOutlined } from "@ant-design/icons";
 import SearchBox from "Commons/SearchBox";
-import CustomButton from "Commons/CustomButton/index";
+
+import "./style.scss";
 
 const IndexSwapTable = ({ data, deleteAllowed, onDelete }) => {
   const [moduleQuery, setModuleQuery] = useState("");
@@ -94,7 +95,7 @@ const IndexSwapTable = ({ data, deleteAllowed, onDelete }) => {
 
   return (
     <div>
-      <div className="indexswap-page__filters">
+      <div className="indexswap-table__filters">
         <SearchBox
           title={"Module Name"}
           value={moduleQuery}

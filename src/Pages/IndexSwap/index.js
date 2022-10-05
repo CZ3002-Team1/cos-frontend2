@@ -35,7 +35,7 @@ const IndexSwapPage = () => {
       <div className="indexswap-page__title">
         <Header1>Index Swap</Header1>
       </div>
-      <div className="indexswap-page__filters">
+      <div className="indexswap-page__buttons">
         <CustomButton onClick={() => navigate("/index-swap/my-request")}>
           My request
         </CustomButton>

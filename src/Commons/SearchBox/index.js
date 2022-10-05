@@ -1,9 +1,10 @@
 import { Input } from "antd";
 import React from "react";
 
+import "./style.scss";
 const SearchBox = ({ title, value, onChange, id }) => {
   return (
-    <div>
+    <div className="searchbox">
       <Input
         addonBefore={`${title}: `}
         type="text"

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { addSwapRequests, deleteSwapRequests } from "../IndexSwapReducer";
 
@@ -12,6 +13,7 @@ import "./style.scss";
 
 const UserRequestListPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { userInfo } = useSelector(
     (state) => state.persistedReducer.UserReducer
   );
@@ -38,7 +40,10 @@ const UserRequestListPage = () => {
       <div className="indexSwapUserRequest-page__title">
         <Header1>Index Swap</Header1>
       </div>
-      <div className="indexSwapUserRequest-page__filters">
+      <div className="indexSwapUserRequest-page__buttons">
+        <CustomButton onClick={() => navigate("/index-swap")}>
+          All Request
+        </CustomButton>
         <CustomButton onClick={() => setIsFormOpen(true)}>
           Add Request
         </CustomButton>

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
+import { registerUser } from "../UserReducer";
 
 import { Form, Input } from "antd";
 import CustomButton from "Commons/CustomButton";
@@ -15,6 +17,7 @@ const RegisterPage = () => {
   const [verified, setVerified] = useState(false);
   const [getOTP, setGetOTP] = useState({});
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { isLoggedIn } = useSelector(
     (state) => state.persistedReducer.UserReducer
@@ -28,7 +31,6 @@ const RegisterPage = () => {
     const res = await axios.post(`${apiEndPoint}api/auth/createOtp`, {
       Email: emailInput,
     });
-    console.log(res.data);
     setGetOTP(res.data);
   };
 
@@ -43,6 +45,9 @@ const RegisterPage = () => {
   const onFinish = async (values) => {
     const res = await axios.post(`${apiEndPoint}api/auth/register`, values);
     console.log({ res });
+    dispatch(registerUser(values)).then(({ payload }) => {
+      if (payload.success) navigate("/events");
+    });
   };
 
   const onFinishFailed = (errorInfo) => {

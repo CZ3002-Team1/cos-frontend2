@@ -3,15 +3,23 @@ import jwtDecode from "jwt-decode";
 import axios from "axios";
 import apiEndPoint from "../../../ApiEndPoint";
 
-const getToken = createAsyncThunk(
-  "userReducer/getToken",
-  async (values, thunkAPI) => {
-    const res = await axios.post(`${apiEndPoint}api/auth/login`, values);
-    console.log({ res });
-    if (res.data.success === false) {
-      alert("login fail");
-    }
+const getToken = createAsyncThunk("userReducer/getToken", async (values) => {
+  const res = await axios.post(`${apiEndPoint}api/auth/login`, values);
+  if (res.data.success === false) {
+    alert("login fail");
+  }
 
+  return res.data;
+});
+
+const registerUser = createAsyncThunk(
+  "userReducer/register",
+  async (values) => {
+    const res = await axios.post(`${apiEndPoint}api/auth/register`, values);
+    console.log(res);
+    if (res.data.success === false) {
+      alert("register fail");
+    }
     return res.data;
   }
 );
@@ -31,14 +39,20 @@ const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getToken.fulfilled, (state, action) => {
-      state.token = action.payload.token;
-      state.userInfo = jwtDecode(action.payload.token);
-      state.isLoggedIn = true;
-    });
+    builder
+      .addCase(getToken.fulfilled, (state, action) => {
+        state.token = action.payload.token;
+        state.userInfo = jwtDecode(action.payload.token);
+        state.isLoggedIn = true;
+      })
+      .addCase(registerUser.fulfilled, (state, action) => {
+        state.token = action.payload.token;
+        state.userInfo = jwtDecode(action.payload.token);
+        state.isLoggedIn = true;
+      });
   },
 });
 
-export { getToken };
+export { getToken, registerUser };
 export const { logOut } = userSlice.actions;
 export default userSlice.reducer;

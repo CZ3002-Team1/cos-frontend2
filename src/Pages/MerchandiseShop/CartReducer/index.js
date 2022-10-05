@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import apiEndPoint from "../../../ApiEndPoint";
 
 let lastId = 0;
 const cartSlice = createSlice({

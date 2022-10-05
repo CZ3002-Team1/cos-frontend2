@@ -48,7 +48,7 @@ export default function Navbar() {
           <div className="navbar__left__selections">
             <NavbarSelection target="/events">Events</NavbarSelection>
             <NavbarSelection target="/shop">Shop</NavbarSelection>
-            <NavbarSelection target="index-swap">Index Swap</NavbarSelection>
+            <NavbarSelection target="/index-swap">Index Swap</NavbarSelection>
           </div>
         )}
       </div>

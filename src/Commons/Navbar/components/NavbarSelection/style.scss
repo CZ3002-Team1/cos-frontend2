@@ -4,7 +4,15 @@
 .navbar-selection {
   margin: rem-calc(30);
   cursor: pointer;
+  padding: rem-calc(10);
+  border-radius: 50%;
+
+  transition: background-color 0.5s ease-in-out;
+
   &__text {
     color: $storm_dust;
+    &:hover {
+      color: $blumine;
+    }
   }
 }

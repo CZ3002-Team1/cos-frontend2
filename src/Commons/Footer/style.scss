@@ -41,6 +41,12 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: baseline;
+        &__logo {
+          transition: all 0.3s ease-in-out;
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
       }
 
       &__socialmedia img {
@@ -73,7 +79,6 @@
     flex-direction: row;
 
     &__copyright {
-      border-right: solid #dadada;
       padding-right: rem-calc(20);
     }
 

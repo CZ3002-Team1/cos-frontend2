@@ -12,6 +12,25 @@ const getSwapRequests = createAsyncThunk(
   }
 );
 
+const addSwapRequests = createAsyncThunk(
+  "indexSwapReducer/addSwapRequests",
+  async (values) => {
+    const res = await axios.post(`${apiEndPoint}api/indexSwap`, values);
+    if (res.data.success === false) {
+      alert(res.data.message);
+    } else return res.data.data;
+  }
+);
+
+const deleteSwapRequests = createAsyncThunk(
+  "indexSwapReducer/deleteSwapRequests",
+  async (index) => {
+    const res = await axios.delete(`${apiEndPoint}api/indexSwap/${index}`);
+    if (res.data.success === false) alert(res.data.message);
+    else return { ...res.data, index };
+  }
+);
+
 const indexSwapSlice = createSlice({
   name: "indexSwapReducer",
   initialState: {
@@ -19,12 +38,24 @@ const indexSwapSlice = createSlice({
     status: "empty",
   },
   extraReducers: (builder) => {
-    builder.addCase(getSwapRequests.fulfilled, (state, action) => {
-      state.swapRequests = action.payload;
-      state.status = "fulfilled";
-    });
+    builder
+      .addCase(getSwapRequests.fulfilled, (state, action) => {
+        state.swapRequests = action.payload;
+        state.status = "fulfilled";
+      })
+      .addCase(addSwapRequests.fulfilled, (state, action) => {
+        state.swapRequests.push(action.payload);
+      })
+      .addCase(deleteSwapRequests.fulfilled, (state, action) => {
+        return {
+          ...state,
+          swapRequests: state.swapRequests.filter(
+            (request) => request._id !== action.payload.index
+          ),
+        };
+      });
   },
 });
 
-export { getSwapRequests };
+export { getSwapRequests, deleteSwapRequests, addSwapRequests };
 export default indexSwapSlice.reducer;

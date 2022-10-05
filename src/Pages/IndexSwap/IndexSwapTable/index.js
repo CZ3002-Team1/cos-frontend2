@@ -1,9 +1,47 @@
+import React, { useState, useEffect } from "react";
 import { Table } from "antd";
-import React from "react";
 
 import { DeleteOutlined } from "@ant-design/icons";
+import SearchBox from "Commons/SearchBox";
+import CustomButton from "Commons/CustomButton/index";
 
 const IndexSwapTable = ({ data, deleteAllowed, onDelete }) => {
+  const [moduleQuery, setModuleQuery] = useState("");
+  const [haveIndexQuery, setHaveIndexQuery] = useState("");
+  const [wantIndexQuery, setWantIndexQuery] = useState("");
+  const [displayData, setDisplayData] = useState(data);
+
+  const handleModuleSearch = (query) => {
+    setModuleQuery(query);
+  };
+  const handleHaveIndexSearch = (query) => {
+    setHaveIndexQuery(query);
+  };
+  const handleWantIndexSearch = (query) => {
+    setWantIndexQuery(query);
+  };
+
+  useEffect(() => setDisplayData(data), [data]);
+  useEffect(() => {
+    const filtered = data.filter((s) =>
+      s["ModuleName"].toLowerCase().startsWith(moduleQuery.toLowerCase())
+    );
+    setDisplayData(filtered);
+  }, [moduleQuery]);
+
+  useEffect(() => {
+    const filtered = data.filter((s) =>
+      s["HaveIndex"].toLowerCase().startsWith(haveIndexQuery.toLowerCase())
+    );
+    setDisplayData(filtered);
+  }, [haveIndexQuery]);
+
+  useEffect(() => {
+    const filtered = data.filter((s) =>
+      s["WantIndex"].toLowerCase().startsWith(wantIndexQuery.toLowerCase())
+    );
+    setDisplayData(filtered);
+  }, [wantIndexQuery]);
   const columns = [
     {
       title: "Student Name",
@@ -53,7 +91,29 @@ const IndexSwapTable = ({ data, deleteAllowed, onDelete }) => {
         ),
     },
   ];
-  return <Table dataSource={data} columns={columns} />;
+
+  return (
+    <div>
+      <div className="indexswap-page__filters">
+        <SearchBox
+          title={"Module Name"}
+          value={moduleQuery}
+          onChange={handleModuleSearch}
+        />
+        <SearchBox
+          title={"Current Index"}
+          value={haveIndexQuery}
+          onChange={handleHaveIndexSearch}
+        />
+        <SearchBox
+          title={"Desired Index"}
+          value={wantIndexQuery}
+          onChange={handleWantIndexSearch}
+        />
+      </div>
+      <Table dataSource={displayData} columns={columns} />
+    </div>
+  );
 };
 
 export default IndexSwapTable;

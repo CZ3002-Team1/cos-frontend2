@@ -19,6 +19,15 @@ const createNewEvent = createAsyncThunk(
   }
 );
 
+const deleteEvent = createAsyncThunk(
+  "eventReducer/deleteEvent",
+  async (_id) => {
+    const res = await axios.delete(`${apiEndPoint}api/event/${_id}`);
+    if (res.data.success === false) alert(res.data.message);
+    else return { ...res.data, _id };
+  }
+);
+
 const eventSlice = createSlice({
   name: "eventReducer",
   initialState: { eventList: [], status: "empty" },
@@ -30,9 +39,14 @@ const eventSlice = createSlice({
       })
       .addCase(createNewEvent.fulfilled, (state, action) => {
         state.eventList.push(action.payload);
+      })
+      .addCase(deleteEvent.fulfilled, (state, action) => {
+        state.eventList = state.eventList.filter(
+          (event) => event._id !== action.payload._id
+        );
       });
   },
 });
 
-export { getEvents, createNewEvent };
+export { getEvents, createNewEvent, deleteEvent };
 export default eventSlice.reducer;

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { createNewEvent, getEvents } from "./EventReducer";
+import { createNewEvent, deleteEvent, getEvents } from "./EventReducer";
 
 import EventsBox from "./EventsBox/index";
 import { Header1 } from "Styles/Typography";
 import CustomButton from "Commons/CustomButton";
+import NewEventForm from "./NewEventForm";
 
 import "./style.scss";
-import NewEventForm from "./NewEventForm";
 
 const EventsPage = () => {
   const dispatch = useDispatch();
@@ -19,6 +19,7 @@ const EventsPage = () => {
 
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [displayData, setDisplayData] = useState(eventInfo.eventList);
+  const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
     if (eventInfo.status === "empty") {
@@ -44,6 +45,10 @@ const EventsPage = () => {
     dispatch(createNewEvent(submitValues));
   };
 
+  const handleDelete = (_id) => {
+    dispatch(deleteEvent(_id));
+  };
+
   return (
     <div className="events-page">
       <div className="events-page__title">
@@ -55,14 +60,23 @@ const EventsPage = () => {
               <CustomButton onClick={() => setIsFormOpen(true)}>
                 Add Event
               </CustomButton>
-              <CustomButton>Manage Event</CustomButton>
+              <CustomButton onClick={() => setEditMode(!editMode)}>
+                {editMode ? "Done Editing" : "Edit Event"}
+              </CustomButton>
             </div>
           )}
         </div>
       </div>
       <div className="events-page__events-wrapper">
         {displayData ? (
-          displayData.map((d) => <EventsBox data={d} key={d._id} />)
+          displayData.map((d) => (
+            <EventsBox
+              data={d}
+              key={d._id}
+              editMode={editMode}
+              onDelete={handleDelete}
+            />
+          ))
         ) : (
           <div />
         )}

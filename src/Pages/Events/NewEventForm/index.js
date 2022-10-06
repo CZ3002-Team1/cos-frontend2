@@ -1,15 +1,7 @@
-import React, { useState } from "react";
-import {
-  Form,
-  Modal,
-  Input,
-  DatePicker,
-  TimePicker,
-  Upload,
-  Button,
-} from "antd";
+import React from "react";
+import { Form, Modal, Input, DatePicker, TimePicker, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import CustomButton from "../../../Commons/CustomButton";
+import CustomButton from "Commons/CustomButton";
 import apiEndPoint from "./../../../ApiEndPoint/index";
 
 const NewEventForm = ({ isOpen, onCancel, onSubmit }) => {

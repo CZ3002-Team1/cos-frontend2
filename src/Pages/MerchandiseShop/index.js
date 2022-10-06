@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import { getShopItems } from "./ShopReducer";
 
 import MerchandiseBox from "./MerchandiseBox";
 import { Header1 } from "Styles/Typography";
-
-import apiEndPoint from "../../ApiEndPoint";
+import CustomButton from "Commons/CustomButton";
 
 import "./style.scss";
-import CustomButton from "Commons/CustomButton";
-import { useNavigate } from "react-router-dom";
 
 const ShopPage = () => {
-  const [displayData, setDisplayData] = useState([]);
+  const dispatch = useDispatch();
+  const shopData = useSelector((state) => state.persistedReducer.ShopReducer);
+  const [displayData, setDisplayData] = useState(shopData.itemList);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const getData = async () => {
-      await axios
-        .get(`${apiEndPoint}api/merch`)
-        .then((res) => {
-          setDisplayData(res.data.data);
-        })
-        .catch((err) => {
-          alert(err.message);
-        });
-    };
-    getData();
+    if (shopData.status === "empty") {
+      dispatch(getShopItems());
+    }
   }, []);
+
+  useEffect(() => {
+    setDisplayData(shopData.itemList);
+  }, [shopData]);
+
   return (
     <div className="shop-page">
       <div className="shop-page__title">

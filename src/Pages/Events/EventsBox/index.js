@@ -67,7 +67,7 @@ const EventsBox = ({ data, editMode, onDelete }) => {
         open={isDeleteModalOpen}
         onOk={handleConfirmDelete}
         onCancel={closeDeleteModal}
-      ></Modal>
+      />
     </div>
   );
 };

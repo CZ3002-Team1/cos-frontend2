@@ -33,7 +33,7 @@ const EventsPage = () => {
     setIsFormOpen(false);
   };
 
-  const handleSubmit = async ({ Name, Dates, Time, Description, File }) => {
+  const handleSubmit = ({ Name, Dates, Time, Description, File }) => {
     const submitValues = {
       Name,
       StartDate: Dates[0].format("YYYY-MM-DD"),

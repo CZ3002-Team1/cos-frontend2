@@ -6,8 +6,8 @@
   "scripts": {
     "develop": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deployment": "node server.js",
-    "build": "webpack --mode production"
+    "start": "node server.js",
+    "build": "webpack --config webpack.prod.config.js"
   },
   "keywords": [],
   "author": "",

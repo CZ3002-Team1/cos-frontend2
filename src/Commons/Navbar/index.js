@@ -45,14 +45,15 @@ export default function Navbar() {
 
       <div className="navbar__right">
         {isLoggedIn && (
-          <div className="navbar__right__logout" title="logout">
-            <LogoutOutlined
-              className="navbar__right__logout__icon"
-              onClick={() => {
-                dispatch({ type: "USER_LOGOUT", payload: {} });
-                navigate("/");
-              }}
-            />
+          <div
+            className="navbar__right__logout"
+            title="logout"
+            onClick={() => {
+              dispatch({ type: "USER_LOGOUT", payload: {} });
+              navigate("/");
+            }}
+          >
+            <LogoutOutlined className="navbar__right__logout__icon" />
           </div>
         )}
       </div>

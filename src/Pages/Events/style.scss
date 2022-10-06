@@ -3,7 +3,11 @@
 
 .events-page {
   margin: rem-calc(40);
-
+  &__title {
+    &__button {
+      float: right;
+    }
+  }
   &__events-wrapper {
     display: flex;
     direction: row;

@@ -1,44 +1,64 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import { createNewEvent, getEvents } from "./EventReducer";
 
 import EventsBox from "./EventsBox/index";
 import { Header1 } from "Styles/Typography";
-
-import apiEndPoint from "../../ApiEndPoint";
+import CustomButton from "Commons/CustomButton";
 
 import "./style.scss";
+import NewEventForm from "./NewEventForm";
 
 const EventsPage = () => {
-  const [data, setData] = useState([]);
-  const [displayData, setDisplayData] = useState([]);
+  const dispatch = useDispatch();
+  const eventInfo = useSelector((state) => state.persistedReducer.EventReducer);
   const { userInfo } = useSelector(
     (state) => state.persistedReducer.UserReducer
   );
 
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [displayData, setDisplayData] = useState(eventInfo.eventList);
+
   useEffect(() => {
-    const getData = async () => {
-      await axios
-        .get(`${apiEndPoint}api/event`)
-        .then((res) => {
-          setDisplayData(res.data.data);
-          setData(res.data.data);
-        })
-        .catch((err) => {
-          alert(err.message);
-          // setDisplayData(dummyData);
-          // setData(dummyData);
-        });
-    };
-    getData();
+    if (eventInfo.status === "empty") {
+      dispatch(getEvents());
+    }
   }, []);
+
+  useEffect(() => setDisplayData(eventInfo.eventList), [eventInfo]);
+
+  const handleClose = () => {
+    setIsFormOpen(false);
+  };
+
+  const handleSubmit = async ({ Name, Dates, Time, Description, File }) => {
+    const submitValues = {
+      Name,
+      StartDate: Dates[0].format("YYYY-MM-DD"),
+      EndDate: Dates[0].format("YYYY-MM-DD"),
+      Time: `${Time[0].format("HH:MM A")} - ${Time[1].format("HH:MM A")}`,
+      Description,
+      PhotoUrl: File[0].response.photoUrl,
+    };
+    dispatch(createNewEvent(submitValues));
+  };
 
   return (
     <div className="events-page">
       <div className="events-page__title">
         <Header1>Welcome Back {userInfo.Name}</Header1>
-        <br />
-        <Header1>Events</Header1>
+        <div>
+          <Header1>Events</Header1>
+          {userInfo.IsAdmin && (
+            <div className="events-page__title__button">
+              <CustomButton onClick={() => setIsFormOpen(true)}>
+                Add Event
+              </CustomButton>
+              <CustomButton>Manage Event</CustomButton>
+            </div>
+          )}
+        </div>
       </div>
       <div className="events-page__events-wrapper">
         {displayData ? (
@@ -47,6 +67,11 @@ const EventsPage = () => {
           <div />
         )}
       </div>
+      <NewEventForm
+        isOpen={isFormOpen}
+        onCancel={handleClose}
+        onSubmit={handleSubmit}
+      />
     </div>
   );
 };

@@ -3,11 +3,16 @@ import { useSelector } from "react-redux";
 
 import { Form, Modal, Input } from "antd";
 
-const IndexSwapForm = ({ isOpen, onCancel, onSubmit }) => {
+const IndexSwapForm = ({ isOpen, onSubmit, onCancel }) => {
   const [form] = Form.useForm();
   const { userInfo } = useSelector(
     (state) => state.persistedReducer.UserReducer
   );
+  const initialValues = {
+    PhoneNumber: userInfo.PhoneNumber,
+    StudentName: userInfo.Name,
+  };
+
   return (
     <Modal
       open={isOpen}
@@ -29,7 +34,12 @@ const IndexSwapForm = ({ isOpen, onCancel, onSubmit }) => {
           });
       }}
     >
-      <Form form={form} layout="vertical" name="form_in_modal">
+      <Form
+        form={form}
+        layout="vertical"
+        name="form_in_modal"
+        initialValues={initialValues}
+      >
         <Form.Item
           name="StudentName"
           rules={[
@@ -39,7 +49,7 @@ const IndexSwapForm = ({ isOpen, onCancel, onSubmit }) => {
             },
           ]}
         >
-          <Input addonBefore="Student Name" />
+          <Input addonBefore="Student Name" disabled />
         </Form.Item>
         <Form.Item
           name="ModuleName"
@@ -94,7 +104,7 @@ const IndexSwapForm = ({ isOpen, onCancel, onSubmit }) => {
             },
           ]}
         >
-          <Input addonBefore="Phone Number" />
+          <Input addonBefore="Phone Number" disabled />
         </Form.Item>
         <Form.Item
           name="TeleHandle"

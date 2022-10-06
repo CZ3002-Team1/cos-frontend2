@@ -8,6 +8,25 @@ const getShopItems = createAsyncThunk("shopReducer/getShopItems", async () => {
   else return res.data.data;
 });
 
+const createNewMerchandise = createAsyncThunk(
+  "shopReducer/createNewMerchandise",
+  async (values) => {
+    const res = await axios.post(`${apiEndPoint}api/merch`, values);
+    if (res.data.success === false) {
+      alert(res.data.message);
+    } else return res.data.data;
+  }
+);
+
+const deleteMerchandise = createAsyncThunk(
+  "shopReducer/deleteMerchandise",
+  async (_id) => {
+    const res = await axios.delete(`${apiEndPoint}api/merch/${_id}`);
+    if (res.data.success === false) alert(res.data.message);
+    else return { ...res.data, _id };
+  }
+);
+
 const shopSlice = createSlice({
   name: "shopReducer",
   initialState: {
@@ -15,12 +34,21 @@ const shopSlice = createSlice({
     status: "empty",
   },
   extraReducers: (builder) => {
-    builder.addCase(getShopItems.fulfilled, (state, action) => {
-      state.itemList = action.payload;
-      state.status = "fulfilled";
-    });
+    builder
+      .addCase(getShopItems.fulfilled, (state, action) => {
+        state.itemList = action.payload;
+        state.status = "fulfilled";
+      })
+      .addCase(createNewMerchandise.fulfilled, (state, action) => {
+        state.itemList.push(action.payload);
+      })
+      .addCase(deleteMerchandise.fulfilled, (state, action) => {
+        state.itemList = state.itemList.filter(
+          (item) => item._id !== action.payload._id
+        );
+      });
   },
 });
 
-export { getShopItems };
+export { getShopItems, createNewMerchandise, deleteMerchandise };
 export default shopSlice.reducer;

@@ -111,7 +111,7 @@ const MerchandisePage = () => {
                 <InputNumber min={1} max={data.Quantity} />
               </Form.Item>
               <Form.Item>
-                <CustomButton htmlType="submit">Add To Cart</CustomButton>
+                <CustomButton htmltype="submit">Add To Cart</CustomButton>
               </Form.Item>
             </Form>
           </div>

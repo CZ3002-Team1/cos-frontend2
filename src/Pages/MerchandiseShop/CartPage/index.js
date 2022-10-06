@@ -34,7 +34,12 @@ const CartPage = () => {
     <div className="cart-page">
       <Header1>Cart</Header1>
       <CartTable data={Items} />
-      <CustomButton onClick={handleCheckout}>Checkout</CustomButton>
+      <CustomButton
+        onClick={handleCheckout}
+        disabled={Items.length === 0 ? true : false}
+      >
+        Checkout
+      </CustomButton>
     </div>
   );
 };

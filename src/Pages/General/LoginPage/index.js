@@ -19,9 +19,9 @@ const LoginPage = () => {
 
   const onFinish = () => {
     form.validateFields().then((values) => {
-      form.resetFields();
       dispatch(getToken(values)).then(({ payload }) => {
         if (payload.success) navigate("/events");
+        form.resetFields();
       });
     });
   };

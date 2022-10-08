@@ -27,7 +27,8 @@ const RegisterPage = () => {
     if (isLoggedIn) navigate("/events");
   }, [isLoggedIn]);
 
-  const generateOTP = async () => {
+  const generateOTP = async (event) => {
+    event.preventDefault();
     const res = await axios.post(`${apiEndPoint}api/auth/createOtp`, {
       Email: emailInput,
     });

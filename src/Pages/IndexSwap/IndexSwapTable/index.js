@@ -24,25 +24,15 @@ const IndexSwapTable = ({ data, deleteAllowed, onDelete }) => {
 
   useEffect(() => setDisplayData(data), [data]);
   useEffect(() => {
-    const filtered = data.filter((s) =>
-      s["ModuleName"].toLowerCase().startsWith(moduleQuery.toLowerCase())
+    const filtered = data.filter(
+      (s) =>
+        s["ModuleName"].toLowerCase().startsWith(moduleQuery.toLowerCase()) &&
+        s["HaveIndex"].toLowerCase().startsWith(haveIndexQuery.toLowerCase()) &&
+        s["WantIndex"].toLowerCase().startsWith(wantIndexQuery.toLowerCase())
     );
     setDisplayData(filtered);
-  }, [moduleQuery]);
+  }, [moduleQuery, haveIndexQuery, wantIndexQuery]);
 
-  useEffect(() => {
-    const filtered = data.filter((s) =>
-      s["HaveIndex"].toLowerCase().startsWith(haveIndexQuery.toLowerCase())
-    );
-    setDisplayData(filtered);
-  }, [haveIndexQuery]);
-
-  useEffect(() => {
-    const filtered = data.filter((s) =>
-      s["WantIndex"].toLowerCase().startsWith(wantIndexQuery.toLowerCase())
-    );
-    setDisplayData(filtered);
-  }, [wantIndexQuery]);
   const columns = [
     {
       title: "Student Name",

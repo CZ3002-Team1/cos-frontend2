@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Modal, Input, DatePicker, TimePicker, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import CustomButton from "Commons/CustomButton";
 import apiEndPoint from "./../../../ApiEndPoint/index";
+import moment from "moment";
 
-const NewEventForm = ({ isOpen, onCancel, onSubmit }) => {
+const EditEventForm = ({ isOpen, onCancel, onSubmit, data }) => {
+  const [isImageReplaced, setIsImageReplaced] = useState(false);
+  const dateFormat = "YYYY-MM-DD";
+  const timeFormat = "hh:mm A";
+  const times = data.Time.split("-");
+  const initialData = {
+    Name: data.Name,
+    Description: data.Description,
+
+    Dates: [
+      moment(data.StartDate, dateFormat),
+      moment(data.EndDate, dateFormat),
+    ],
+    Time: [moment(times[0], timeFormat), moment(times[1], timeFormat)],
+  };
   const [form] = Form.useForm();
 
   const normFile = (e) => {
+    if (!isImageReplaced) setIsImageReplaced(true);
     if (Array.isArray(e)) {
       return e;
     }
@@ -17,7 +33,7 @@ const NewEventForm = ({ isOpen, onCancel, onSubmit }) => {
   return (
     <div>
       <Modal
-        title="Create New Event"
+        title="Edit Event"
         open={isOpen}
         onCancel={onCancel}
         onOk={() => {
@@ -33,7 +49,12 @@ const NewEventForm = ({ isOpen, onCancel, onSubmit }) => {
             });
         }}
       >
-        <Form form={form} layout="vertical" name="form_in_modal">
+        <Form
+          form={form}
+          layout="vertical"
+          name="form_in_modal"
+          initialValues={initialData}
+        >
           <Form.Item
             name="Name"
             rules={[
@@ -87,12 +108,6 @@ const NewEventForm = ({ isOpen, onCancel, onSubmit }) => {
             valuePropName="fileList"
             getValueFromEvent={normFile}
             extra="Upload Event Image"
-            rules={[
-              {
-                required: true,
-                message: "Please input your event image!",
-              },
-            ]}
           >
             <Upload
               name="File"
@@ -106,10 +121,16 @@ const NewEventForm = ({ isOpen, onCancel, onSubmit }) => {
               </CustomButton>
             </Upload>
           </Form.Item>
+          {!isImageReplaced && (
+            <div>
+              <p>Current Image</p>
+              <img src={data.PhotoUrl} style={{ maxWidth: 100 }} />
+            </div>
+          )}
         </Form>
       </Modal>
     </div>
   );
 };
 
-export default NewEventForm;
+export default EditEventForm;

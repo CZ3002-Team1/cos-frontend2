@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import { Body2, Header2 } from "Styles/Typography/index";
+import { useDispatch } from "react-redux";
 
-import EventDetailModal from "./../EventDetailModal/index";
-import { DeleteOutlined } from "@ant-design/icons";
 import { Modal } from "antd";
+import { DeleteOutlined, FormOutlined } from "@ant-design/icons";
+import EventDetailModal from "./../EventDetailModal/index";
 
 import "./style.scss";
+import EditEventForm from "../EditEventForm";
+import { editEvent } from "../EventReducer";
 
 const EventsBox = ({ data, editMode, onDelete }) => {
+  console.log(data);
+  const dispacth = useDispatch();
   const [isEventModalOpen, setIsEventModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const showEventModal = () => {
     setIsEventModalOpen(true);
@@ -32,6 +38,26 @@ const EventsBox = ({ data, editMode, onDelete }) => {
     closeDeleteModal();
   };
 
+  const showEditModal = () => {
+    setIsEditModalOpen(true);
+  };
+
+  const closeEditModal = () => {
+    setIsEditModalOpen(false);
+  };
+
+  const handleSubmitEdit = ({ Name, Dates, Time, Description, File }) => {
+    const submitValues = {
+      Name,
+      StartDate: Dates[0].format("YYYY-MM-DD"),
+      EndDate: Dates[1].format("YYYY-MM-DD"),
+      Time: `${Time[0].format("h:mm a")} - ${Time[1].format("h:mm a")}`,
+      Description,
+      PhotoUrl: File ? File[0].response.photoUrl : data.PhotoUrl,
+    };
+    dispacth(editEvent({ _id: data._id, values: submitValues }));
+  };
+
   return (
     <div>
       <div
@@ -45,10 +71,16 @@ const EventsBox = ({ data, editMode, onDelete }) => {
           <div className="events-box__bottom__header">
             <Header2>{data.Name}</Header2>
             {editMode && (
-              <DeleteOutlined
-                className="events-box__bottom__header__delete"
-                onClick={showDeleteModal}
-              />
+              <div>
+                <FormOutlined
+                  className="events-box__bottom__header__edit"
+                  onClick={showEditModal}
+                />
+                <DeleteOutlined
+                  className="events-box__bottom__header__delete"
+                  onClick={showDeleteModal}
+                />
+              </div>
             )}
           </div>
           <Body2>
@@ -67,6 +99,12 @@ const EventsBox = ({ data, editMode, onDelete }) => {
         open={isDeleteModalOpen}
         onOk={handleConfirmDelete}
         onCancel={closeDeleteModal}
+      />
+      <EditEventForm
+        isOpen={isEditModalOpen}
+        onCancel={closeEditModal}
+        onSubmit={handleSubmitEdit}
+        data={data}
       />
     </div>
   );

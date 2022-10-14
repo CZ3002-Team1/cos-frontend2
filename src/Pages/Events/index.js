@@ -34,11 +34,12 @@ const EventsPage = () => {
   };
 
   const handleSubmit = ({ Name, Dates, Time, Description, File }) => {
+    console.log(Time);
     const submitValues = {
       Name,
       StartDate: Dates[0].format("YYYY-MM-DD"),
-      EndDate: Dates[0].format("YYYY-MM-DD"),
-      Time: `${Time[0].format("HH:MM A")} - ${Time[1].format("HH:MM A")}`,
+      EndDate: Dates[1].format("YYYY-MM-DD"),
+      Time: `${Time[0].format("h:mm a")} - ${Time[1].format("h:mm a")}`,
       Description,
       PhotoUrl: File[0].response.photoUrl,
     };

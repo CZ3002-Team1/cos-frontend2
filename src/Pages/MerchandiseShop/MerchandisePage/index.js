@@ -7,7 +7,7 @@ import { addItemToCart } from "../CartReducer";
 
 import apiEndPoint from "../../../ApiEndPoint";
 
-import { Form, InputNumber, Radio } from "antd";
+import { Form, InputNumber, Radio, Modal } from "antd";
 import CustomButton from "Commons/CustomButton";
 import { Header1, Body1, Body2 } from "Styles/Typography";
 
@@ -59,6 +59,10 @@ const MerchandisePage = () => {
         Price: data.Price,
       })
     );
+
+    Modal.success({
+      content: "Item successfully added to cart",
+    });
   };
 
   return (

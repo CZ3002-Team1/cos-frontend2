@@ -59,15 +59,20 @@ const ShopPage = () => {
         <div className="shop-page__title__buttons">
           {userInfo.IsAdmin && (
             <div>
-              <CustomButton onClick={() => setIsFormOpen(true)}>
+              <CustomButton onClick={() => setIsFormOpen(true)} type="button">
                 Add New Item
               </CustomButton>
-              <CustomButton onClick={() => setEditMode(!editMode)}>
+              <CustomButton
+                onClick={() => setEditMode(!editMode)}
+                type="button"
+              >
                 {editMode ? "Done Editing" : "Edit Shop"}
               </CustomButton>
             </div>
           )}
-          <CustomButton onClick={() => navigate("/Cart")}>My Cart</CustomButton>
+          <CustomButton onClick={() => navigate("/Cart")} type="button">
+            My Cart
+          </CustomButton>
           <CustomButton>My Orders</CustomButton>
         </div>
       </div>

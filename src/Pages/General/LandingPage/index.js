@@ -30,8 +30,10 @@ export default function LandingPage() {
           <Body1>A one-stop solution for SCSE member</Body1>
         </div>
         <div className="homepage__left__button">
-          <CustomButton onClick={() => navigate("/login")}>Log In</CustomButton>
-          <CustomButton onClick={() => navigate("/register")}>
+          <CustomButton onClick={() => navigate("/login")} type="button">
+            Log In
+          </CustomButton>
+          <CustomButton onClick={() => navigate("/register")} type="button">
             Register
           </CustomButton>
         </div>

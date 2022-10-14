@@ -27,8 +27,7 @@ const RegisterPage = () => {
     if (isLoggedIn) navigate("/events");
   }, [isLoggedIn]);
 
-  const generateOTP = async (event) => {
-    event.preventDefault();
+  const generateOTP = async () => {
     const res = await axios.post(`${apiEndPoint}api/auth/createOtp`, {
       Email: emailInput,
     });
@@ -95,9 +94,10 @@ const RegisterPage = () => {
             <CustomButton
               disabled={emailInput.length === 0 || verified}
               onClick={generateOTP}
+              type="button"
             >
               Generate OTP
-            </CustomButton>{" "}
+            </CustomButton>
             <span style={{ color: "red" }}>
               {getOTP.message ? getOTP.message : ""}
             </span>
@@ -189,9 +189,7 @@ const RegisterPage = () => {
               span: 16,
             }}
           >
-            <CustomButton type="primary" htmlType="submit">
-              Submit
-            </CustomButton>
+            <CustomButton type="submit">Submit</CustomButton>
           </Form.Item>
         </Form>
       </div>

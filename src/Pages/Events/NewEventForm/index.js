@@ -103,7 +103,7 @@ const NewEventForm = ({ isOpen, onCancel, onSubmit }) => {
               listType="picture"
               maxCount={1}
             >
-              <CustomButton icon={<UploadOutlined />}>
+              <CustomButton icon={<UploadOutlined />} type="button">
                 Click to upload event image (Max: 1)
               </CustomButton>
             </Upload>

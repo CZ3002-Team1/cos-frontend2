@@ -36,10 +36,13 @@ const IndexSwapPage = () => {
         <Header1>Index Swap</Header1>
       </div>
       <div className="indexswap-page__buttons">
-        <CustomButton onClick={() => navigate("/index-swap/my-request")}>
+        <CustomButton
+          onClick={() => navigate("/index-swap/my-request")}
+          type="button"
+        >
           My request
         </CustomButton>
-        <CustomButton type="danger" onClick={() => setIsFormOpen(true)}>
+        <CustomButton onClick={() => setIsFormOpen(true)} type="button">
           Add Request
         </CustomButton>
       </div>

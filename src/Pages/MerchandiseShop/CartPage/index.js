@@ -37,6 +37,7 @@ const CartPage = () => {
       <CustomButton
         onClick={handleCheckout}
         disabled={Items.length === 0 ? true : false}
+        type="button"
       >
         Checkout
       </CustomButton>

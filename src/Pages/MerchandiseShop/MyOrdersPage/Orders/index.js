@@ -1,6 +1,6 @@
 import { Table } from "antd";
 import React from "react";
-import { Header2, Body1, Body2 } from "Styles/Typography";
+import { Body1, Body2 } from "Styles/Typography";
 
 const Orders = ({ orderData }) => {
   console.log(orderData);
@@ -44,8 +44,8 @@ const Orders = ({ orderData }) => {
 
   return (
     <div>
-      <Body1>Order ID:{orderData._id}</Body1>
-      <br></br>
+      <Body1>Order ID: {orderData._id}</Body1>
+      <br />
       <Body1>Status: {orderData.Status}</Body1>
       <Table columns={columns} dataSource={items} footer={setFooter} />
     </div>

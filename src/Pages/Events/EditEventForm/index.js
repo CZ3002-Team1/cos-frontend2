@@ -114,7 +114,7 @@ const EditEventForm = ({ isOpen, onCancel, onSubmit, data }) => {
               action={`${apiEndPoint}api/file/uploadFile`}
               listType="picture"
               maxCount={1}
-              accept={".png, .jpg, .jpeg"}
+              accept="image/*"
             >
               <CustomButton icon={<UploadOutlined />} type="button">
                 Click to upload event image (Max: 1)

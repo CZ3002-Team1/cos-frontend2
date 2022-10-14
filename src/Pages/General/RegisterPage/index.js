@@ -43,7 +43,12 @@ const RegisterPage = () => {
   };
 
   const onFinish = async (values) => {
-    dispatch(registerUser(values)).then(({ payload }) => {
+    dispatch(
+      registerUser({
+        ...values,
+        Email: values.Email.toLowerCase(),
+      })
+    ).then(({ payload }) => {
       if (payload.success) navigate("/events");
     });
   };
@@ -75,7 +80,7 @@ const RegisterPage = () => {
             rules={[
               () => ({
                 validator(_, value) {
-                  if (value && value.endsWith("@e.ntu.edu.sg")) {
+                  if (value && value.toLowerCase().endsWith("@e.ntu.edu.sg")) {
                     setEmailInput(value);
                     return Promise.resolve();
                   }

@@ -19,10 +19,12 @@ const LoginPage = () => {
 
   const onFinish = () => {
     form.validateFields().then((values) => {
-      dispatch(getToken(values)).then(({ payload }) => {
-        if (payload.success) navigate("/events");
-        form.resetFields();
-      });
+      dispatch(getToken({ ...values, Email: values.Email.toLowerCase() })).then(
+        ({ payload }) => {
+          if (payload.success) navigate("/events");
+          form.resetFields();
+        }
+      );
     });
   };
 
@@ -57,7 +59,7 @@ const LoginPage = () => {
             rules={[
               () => ({
                 validator(_, value) {
-                  if (value && value.endsWith("@e.ntu.edu.sg")) {
+                  if (value && value.toLowerCase().endsWith("@e.ntu.edu.sg")) {
                     return Promise.resolve();
                   }
 

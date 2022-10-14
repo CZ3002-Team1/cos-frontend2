@@ -21,7 +21,6 @@ const TagInput = ({ tags, setTags, title }) => {
 
   const handleClose = (removedTag) => {
     const newTags = tags.filter((tag) => tag !== removedTag);
-    console.log(newTags);
     setTags(newTags);
   };
 

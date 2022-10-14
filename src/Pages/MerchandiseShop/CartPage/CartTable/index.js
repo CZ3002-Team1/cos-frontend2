@@ -5,7 +5,7 @@ import { removeItemFromCart } from "../../CartReducer";
 
 import { DeleteOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
-import { Body1 } from "Styles/Typography";
+import { Body2 } from "Styles/Typography";
 
 import "./style.scss";
 
@@ -21,7 +21,7 @@ const CartTable = ({ data }) => {
       (total, item) => total + item.Price * item.Quantity,
       0
     );
-    return <Body1 className="bottom">Total Price: ${sum.toFixed(2)}</Body1>;
+    return <Body2 className="bottom">Total Price: ${sum.toFixed(2)}</Body2>;
   };
 
   const columns = [
@@ -29,36 +29,36 @@ const CartTable = ({ data }) => {
       title: "Item Name",
       dataIndex: "Name",
       key: "Name",
-      render: (_, { Name }) => <Body1>{Name}</Body1>,
+      render: (_, { Name }) => <Body2>{Name}</Body2>,
     },
     {
       title: "Size",
       dataIndex: "Size",
       key: "Size",
-      render: (_, { Size }) => <Body1>{Size}</Body1>,
+      render: (_, { Size }) => <Body2>{Size}</Body2>,
     },
     {
       title: "Color",
       dataIndex: "Color",
       key: "Color",
-      render: (_, { Color }) => <Body1>{Color}</Body1>,
+      render: (_, { Color }) => <Body2>{Color}</Body2>,
     },
     {
       title: "Quantity",
       dataIndex: "Quantity",
       key: "Quantity",
-      render: (_, { Quantity }) => <Body1>{Quantity}</Body1>,
+      render: (_, { Quantity }) => <Body2>{Quantity}</Body2>,
     },
     {
       title: "Price",
       dataIndex: "Price",
       key: "Price",
-      render: (_, { Price }) => <Body1>${Price}</Body1>,
+      render: (_, { Price }) => <Body2>${Price}</Body2>,
     },
     {
       title: "Total",
       render: (row) => {
-        return <Body1>${(row.Price * row.Quantity).toFixed(2)}</Body1>;
+        return <Body2>${(row.Price * row.Quantity).toFixed(2)}</Body2>;
       },
     },
     {

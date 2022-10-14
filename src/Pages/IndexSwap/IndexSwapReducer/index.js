@@ -7,7 +7,7 @@ const getSwapRequests = createAsyncThunk(
   async () => {
     const res = await axios.get(`${apiEndPoint}api/indexSwap`);
     if (res.data.success === false) {
-      alert(res.data.message);
+      return [];
     } else return res.data.data;
   }
 );

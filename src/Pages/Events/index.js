@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createNewEvent, deleteEvent, getEvents } from "./EventReducer";
 
 import EventsBox from "./EventsBox/index";
-import { Header1 } from "Styles/Typography";
+import { Header1, Header2 } from "Styles/Typography";
 import CustomButton from "Commons/CustomButton";
 import NewEventForm from "./NewEventForm";
 
@@ -37,8 +37,8 @@ const EventsPage = () => {
     const submitValues = {
       Name,
       StartDate: Dates[0].format("YYYY-MM-DD"),
-      EndDate: Dates[0].format("YYYY-MM-DD"),
-      Time: `${Time[0].format("HH:MM A")} - ${Time[1].format("HH:MM A")}`,
+      EndDate: Dates[1].format("YYYY-MM-DD"),
+      Time: `${Time[0].format("h:mm a")} - ${Time[1].format("h:mm a")}`,
       Description,
       PhotoUrl: File[0].response.photoUrl,
     };
@@ -55,6 +55,7 @@ const EventsPage = () => {
         <Header1>Welcome Back {userInfo.Name}</Header1>
         <div>
           <Header1>Events</Header1>
+
           {userInfo.IsAdmin && (
             <div className="events-page__title__button">
               <CustomButton onClick={() => setIsFormOpen(true)} type="button">
@@ -68,6 +69,12 @@ const EventsPage = () => {
               </CustomButton>
             </div>
           )}
+          {eventInfo.status === "fulfilled" &&
+            eventInfo.eventList.length === 0 && (
+              <div>
+                <Header2>There are currently no events</Header2>
+              </div>
+            )}
         </div>
       </div>
       <div className="events-page__events-wrapper">

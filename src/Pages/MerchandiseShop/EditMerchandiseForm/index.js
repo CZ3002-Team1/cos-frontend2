@@ -7,13 +7,20 @@ import apiEndPoint from "./../../../ApiEndPoint";
 import CustomButton from "Commons/CustomButton";
 import TagInput from "Commons/TagInput";
 
-const NewMerchandiseForm = ({ isOpen, onCancel, onSubmit }) => {
+const EditMerchandiseForm = ({ data, isOpen, onCancel, onSubmit }) => {
+  const [isImageReplaced, setIsImageReplaced] = useState(false);
   const [form] = Form.useForm();
-  const [colors, setColors] = useState([]);
-  const [sizes, setSizes] = useState([]);
+  const [colors, setColors] = useState(data.Colors);
+  const [sizes, setSizes] = useState(data.Sizes);
 
+  const initialData = {
+    Name: data.Name,
+    Description: data.Description,
+    Price: data.Price,
+    Quantity: data.Quantity,
+  };
   const normFile = (e) => {
-    console.log("Upload event:", e);
+    if (!isImageReplaced) setIsImageReplaced(true);
 
     if (Array.isArray(e)) {
       return e;
@@ -25,7 +32,7 @@ const NewMerchandiseForm = ({ isOpen, onCancel, onSubmit }) => {
   return (
     <div>
       <Modal
-        title="Create New Listing"
+        title="Edit Listing"
         open={isOpen}
         onCancel={onCancel}
         onOk={() => {
@@ -41,7 +48,12 @@ const NewMerchandiseForm = ({ isOpen, onCancel, onSubmit }) => {
             });
         }}
       >
-        <Form form={form} layout="vertical" name="form_in_modal">
+        <Form
+          form={form}
+          layout="vertical"
+          name="form_in_modal"
+          initialValues={initialData}
+        >
           <Form.Item
             name="Name"
             rules={[
@@ -129,28 +141,29 @@ const NewMerchandiseForm = ({ isOpen, onCancel, onSubmit }) => {
             valuePropName="fileList"
             getValueFromEvent={normFile}
             extra="Upload Merchandise Image"
-            rules={[
-              {
-                required: true,
-                message: "Please input your merchandise image!",
-              },
-            ]}
           >
             <Upload
               name="File"
               action={`${apiEndPoint}api/file/uploadFile`}
               listType="picture"
               maxCount={1}
+              accept="image/*"
             >
               <CustomButton icon={<UploadOutlined />} type="button">
                 Click to upload merchandise image
               </CustomButton>
             </Upload>
           </Form.Item>
+          {!isImageReplaced && (
+            <div>
+              <p>Current Image</p>
+              <img src={data.PhotoUrl} style={{ maxWidth: 100 }} />
+            </div>
+          )}
         </Form>
       </Modal>
     </div>
   );
 };
 
-export default NewMerchandiseForm;
+export default EditMerchandiseForm;

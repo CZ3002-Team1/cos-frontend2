@@ -18,6 +18,20 @@ const createNewMerchandise = createAsyncThunk(
   }
 );
 
+const editMerchandise = createAsyncThunk(
+  "shopReducer/editMerchandise",
+  async (data) => {
+    console.log("subdata", { data });
+    const res = await axios.put(
+      `${apiEndPoint}api/merch/${data._id}`,
+      data.values
+    );
+    if (res.data.success === false) {
+      alert(res.data.message);
+    } else return res.data.data;
+  }
+);
+
 const deleteMerchandise = createAsyncThunk(
   "shopReducer/deleteMerchandise",
   async (_id) => {
@@ -42,6 +56,12 @@ const shopSlice = createSlice({
       .addCase(createNewMerchandise.fulfilled, (state, action) => {
         state.itemList.push(action.payload);
       })
+      .addCase(editMerchandise.fulfilled, (state, action) => {
+        const index = state.itemList.findIndex(
+          (item) => item._id == action.payload._id
+        );
+        state.itemList[index] = action.payload;
+      })
       .addCase(deleteMerchandise.fulfilled, (state, action) => {
         state.itemList = state.itemList.filter(
           (item) => item._id !== action.payload._id
@@ -50,5 +70,10 @@ const shopSlice = createSlice({
   },
 });
 
-export { getShopItems, createNewMerchandise, deleteMerchandise };
+export {
+  getShopItems,
+  createNewMerchandise,
+  editMerchandise,
+  deleteMerchandise,
+};
 export default shopSlice.reducer;

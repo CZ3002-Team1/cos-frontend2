@@ -87,7 +87,7 @@ const LoginPage = () => {
               span: 16,
             }}
           >
-            <CustomButton type="primary" onClick={onFinish}>
+            <CustomButton type="submit" onClick={onFinish}>
               Submit
             </CustomButton>
           </Form.Item>

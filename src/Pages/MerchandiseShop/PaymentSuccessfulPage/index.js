@@ -17,10 +17,10 @@ const PaymentSuccessfulPage = () => {
       </div>
       <br />
       <div>
-        <CustomButton onClick={() => navigate("/")}>
+        <CustomButton onClick={() => navigate("/")} type="button">
           Return to Home Page
         </CustomButton>
-        <CustomButton onClick={() => navigate("/shop")}>
+        <CustomButton onClick={() => navigate("/shop")} type="button">
           Continue Shopping
         </CustomButton>
       </div>

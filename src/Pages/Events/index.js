@@ -57,10 +57,13 @@ const EventsPage = () => {
           <Header1>Events</Header1>
           {userInfo.IsAdmin && (
             <div className="events-page__title__button">
-              <CustomButton onClick={() => setIsFormOpen(true)}>
+              <CustomButton onClick={() => setIsFormOpen(true)} type="button">
                 Add Event
               </CustomButton>
-              <CustomButton onClick={() => setEditMode(!editMode)}>
+              <CustomButton
+                onClick={() => setEditMode(!editMode)}
+                type="button"
+              >
                 {editMode ? "Done Editing" : "Edit Event"}
               </CustomButton>
             </div>

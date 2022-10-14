@@ -16,8 +16,10 @@ const PaymentFailPage = () => {
       </div>
       <br />
       <div>
-        <CustomButton onClick={() => navigate("/")}>Home Page</CustomButton>
-        <CustomButton onClick={() => navigate("/cart")}>
+        <CustomButton onClick={() => navigate("/")} type="button">
+          Home Page
+        </CustomButton>
+        <CustomButton onClick={() => navigate("/cart")} type="button">
           Return to Cart
         </CustomButton>
       </div>

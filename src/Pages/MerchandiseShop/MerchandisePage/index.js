@@ -66,7 +66,9 @@ const MerchandisePage = () => {
       <div className="merch-page__title">
         <Header1>{data.Name}</Header1>
         <div className="shop-page__title__buttons">
-          <CustomButton onClick={() => navigate("/Cart")}>My Cart</CustomButton>
+          <CustomButton onClick={() => navigate("/Cart")} type="button">
+            My Cart
+          </CustomButton>
           <CustomButton>My Orders</CustomButton>
         </div>
       </div>

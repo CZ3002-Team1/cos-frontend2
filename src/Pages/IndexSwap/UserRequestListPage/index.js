@@ -41,10 +41,10 @@ const UserRequestListPage = () => {
         <Header1>Index Swap</Header1>
       </div>
       <div className="indexSwapUserRequest-page__buttons">
-        <CustomButton onClick={() => navigate("/index-swap")}>
+        <CustomButton onClick={() => navigate("/index-swap")} type="button">
           All Request
         </CustomButton>
-        <CustomButton onClick={() => setIsFormOpen(true)}>
+        <CustomButton onClick={() => setIsFormOpen(true)} type="button">
           Add Request
         </CustomButton>
       </div>

@@ -9,13 +9,13 @@ import RegisterPage from "Pages/General/RegisterPage";
 import ShopPage from "Pages/MerchandiseShop";
 import MerchandisePage from "Pages/MerchandiseShop/MerchandisePage";
 import IndexSwapPage from "Pages/IndexSwap/index";
-import CartPage from "./../Pages/MerchandiseShop/CartPage/index";
-import PaymentSuccessfulPage from "../Pages/MerchandiseShop/PaymentSuccessfulPage";
-import PaymentFailPage from "../Pages/MerchandiseShop/PaymentFailPage";
+import CartPage from "Pages/MerchandiseShop/CartPage/index";
+import PaymentSuccessfulPage from "Pages/MerchandiseShop/PaymentSuccessfulPage";
+import PaymentFailPage from "Pages/MerchandiseShop/PaymentFailPage";
+import UserRequestListPage from "Pages/IndexSwap/UserRequestListPage";
+import MyOrdersPage from "Pages/MerchandiseShop/MyOrdersPage";
 
 import { UserRoute } from "./PrivateRoute";
-import UserRequestListPage from "../Pages/IndexSwap/UserRequestListPage";
-import MyOrdersPage from "../Pages/MerchandiseShop/MyOrdersPage";
 
 const MainNavigation = () => {
   return (

@@ -15,6 +15,7 @@ import PaymentFailPage from "../Pages/MerchandiseShop/PaymentFailPage";
 
 import { UserRoute } from "./PrivateRoute";
 import UserRequestListPage from "../Pages/IndexSwap/UserRequestListPage";
+import MyOrdersPage from "../Pages/MerchandiseShop/MyOrdersPage";
 
 const MainNavigation = () => {
   return (
@@ -78,6 +79,15 @@ const MainNavigation = () => {
             }
           />
         </Route>
+
+        <Route
+          path="my-orders"
+          element={
+            <UserRoute>
+              <MyOrdersPage />
+            </UserRoute>
+          }
+        />
 
         <Route path="index-swap">
           <Route

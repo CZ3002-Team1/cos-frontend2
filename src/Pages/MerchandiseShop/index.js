@@ -70,10 +70,12 @@ const ShopPage = () => {
               </CustomButton>
             </div>
           )}
-          <CustomButton onClick={() => navigate("/Cart")} type="button">
+          <CustomButton onClick={() => navigate("/cart")} type="button">
             My Cart
           </CustomButton>
-          <CustomButton>My Orders</CustomButton>
+          <CustomButton onClick={() => navigate("/my-orders")} type="button">
+            My Orders
+          </CustomButton>
         </div>
       </div>
       <div className="shop-page__merch-wrapper">

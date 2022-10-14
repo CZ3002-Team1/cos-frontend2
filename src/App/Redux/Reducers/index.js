@@ -5,6 +5,7 @@ import IndexSwapReducer from "../../../Pages/IndexSwap/IndexSwapReducer";
 import CartReducer from "../../../Pages/MerchandiseShop/CartReducer";
 import EventReducer from "../../../Pages/Events/EventReducer";
 import ShopReducer from "../../../Pages/MerchandiseShop/ShopReducer";
+import MyOrderReducer from "../../../Pages/MerchandiseShop/MyOrdersPage/MyOrderReducer";
 
 const appReducers = combineReducers({
   UserReducer,
@@ -12,6 +13,7 @@ const appReducers = combineReducers({
   IndexSwapReducer,
   EventReducer,
   ShopReducer,
+  MyOrderReducer,
 });
 
 const rootReducer = (state, action) => {

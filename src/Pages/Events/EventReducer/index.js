@@ -5,7 +5,7 @@ import apiEndPoint from "../../../ApiEndPoint";
 const getEvents = createAsyncThunk("eventReducer/getEvents", async () => {
   const res = await axios.get(`${apiEndPoint}api/event`);
   if (res.data.success === false) {
-    alert(res.data.message);
+    return [];
   } else return res.data.data;
 });
 

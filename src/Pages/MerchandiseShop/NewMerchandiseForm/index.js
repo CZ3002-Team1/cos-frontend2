@@ -13,12 +13,9 @@ const NewMerchandiseForm = ({ isOpen, onCancel, onSubmit }) => {
   const [sizes, setSizes] = useState([]);
 
   const normFile = (e) => {
-    console.log("Upload event:", e);
-
     if (Array.isArray(e)) {
       return e;
     }
-    console.log(e?.fileList);
     return e?.fileList;
   };
 

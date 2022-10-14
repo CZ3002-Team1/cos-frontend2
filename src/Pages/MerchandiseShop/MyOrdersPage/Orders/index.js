@@ -3,7 +3,6 @@ import React from "react";
 import { Body1, Body2 } from "Styles/Typography";
 
 const Orders = ({ orderData }) => {
-  console.log(orderData);
   const items = orderData.Items;
 
   const setFooter = (data) => {

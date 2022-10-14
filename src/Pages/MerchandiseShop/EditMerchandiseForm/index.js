@@ -25,7 +25,6 @@ const EditMerchandiseForm = ({ data, isOpen, onCancel, onSubmit }) => {
     if (Array.isArray(e)) {
       return e;
     }
-    console.log(e?.fileList);
     return e?.fileList;
   };
 

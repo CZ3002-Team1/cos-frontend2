@@ -4,7 +4,7 @@ import apiEndPoint from "../../../ApiEndPoint";
 
 const getShopItems = createAsyncThunk("shopReducer/getShopItems", async () => {
   const res = await axios.get(`${apiEndPoint}api/merch`);
-  if (res.data.success === false) alert(res.data.message);
+  if (res.data.success === false) return [];
   else return res.data.data;
 });
 
@@ -21,7 +21,6 @@ const createNewMerchandise = createAsyncThunk(
 const editMerchandise = createAsyncThunk(
   "shopReducer/editMerchandise",
   async (data) => {
-    console.log("subdata", { data });
     const res = await axios.put(
       `${apiEndPoint}api/merch/${data._id}`,
       data.values

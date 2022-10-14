@@ -9,7 +9,7 @@ import {
 } from "./ShopReducer";
 
 import MerchandiseBox from "./MerchandiseBox";
-import { Header1 } from "Styles/Typography";
+import { Header1, Header2 } from "Styles/Typography";
 import CustomButton from "Commons/CustomButton";
 
 import "./style.scss";
@@ -70,6 +70,7 @@ const ShopPage = () => {
               </CustomButton>
             </div>
           )}
+
           <CustomButton onClick={() => navigate("/cart")} type="button">
             My Cart
           </CustomButton>
@@ -78,6 +79,11 @@ const ShopPage = () => {
           </CustomButton>
         </div>
       </div>
+      {shopData.status === "fulfilled" && shopData.itemList.length === 0 && (
+        <div>
+          <Header2>There are currently no items</Header2>
+        </div>
+      )}
       <div className="shop-page__merch-wrapper">
         {displayData ? (
           displayData.map((d) => (

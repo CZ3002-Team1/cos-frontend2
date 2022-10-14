@@ -11,7 +11,6 @@ import EditEventForm from "../EditEventForm";
 import { editEvent } from "../EventReducer";
 
 const EventsBox = ({ data, editMode, onDelete }) => {
-  console.log(data);
   const dispacth = useDispatch();
   const [isEventModalOpen, setIsEventModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);

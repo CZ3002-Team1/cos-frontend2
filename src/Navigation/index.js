@@ -14,8 +14,8 @@ import PaymentSuccessfulPage from "Pages/MerchandiseShop/PaymentSuccessfulPage";
 import PaymentFailPage from "Pages/MerchandiseShop/PaymentFailPage";
 import UserRequestListPage from "Pages/IndexSwap/UserRequestListPage";
 import MyOrdersPage from "Pages/MerchandiseShop/MyOrdersPage";
+import NotFoundPage from "Pages/General/NotFoundPage";
 
-import NotFoundPage from "../Pages/General/NotFoundPage";
 import { UserRoute } from "./PrivateRoute";
 
 const MainNavigation = () => {

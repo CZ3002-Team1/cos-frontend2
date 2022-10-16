@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "antd";
 
-import { DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined, FormOutlined } from "@ant-design/icons";
 import SearchBox from "Commons/SearchBox";
 
 import "./style.scss";
+import EditIndexSwapForm from "../EditIndexSwapForm";
 
-const IndexSwapTable = ({ data, deleteAllowed, onDelete }) => {
+const IndexSwapTable = ({ data, editAllowed, onDelete, onEditSubmit }) => {
   const [moduleQuery, setModuleQuery] = useState("");
   const [haveIndexQuery, setHaveIndexQuery] = useState("");
   const [wantIndexQuery, setWantIndexQuery] = useState("");
   const [displayData, setDisplayData] = useState(data);
+  const [isEditOpen, setIsEditOpen] = useState(false);
 
   const handleModuleSearch = (query) => {
     setModuleQuery(query);
@@ -71,11 +73,31 @@ const IndexSwapTable = ({ data, deleteAllowed, onDelete }) => {
     },
     {
       title: "",
+      key: "edit",
+      render: (record) =>
+        editAllowed && (
+          <div>
+            <FormOutlined
+              className="indexswap-table__edit-icon"
+              alt="trash"
+              onClick={() => setIsEditOpen(true)}
+            />
+            <EditIndexSwapForm
+              isOpen={isEditOpen}
+              onSubmit={onEditSubmit}
+              onCancel={() => setIsEditOpen(false)}
+              data={record}
+            />
+          </div>
+        ),
+    },
+    {
+      title: "",
       key: "delete",
       render: (record) =>
-        deleteAllowed && (
+        editAllowed && (
           <DeleteOutlined
-            className="cart-table__delete-icon"
+            className="indexswap-table__delete-icon"
             alt="trash"
             onClick={() => onDelete(record)}
           />

@@ -22,6 +22,19 @@ const addSwapRequests = createAsyncThunk(
   }
 );
 
+const editSwapRequests = createAsyncThunk(
+  "indexSwapReducer/editSwapRequests",
+  async (data) => {
+    const res = await axios.put(
+      `${apiEndPoint}api/indexSwap/${data._id}`,
+      data.values
+    );
+    if (res.data.success === false) {
+      alert(res.data.message);
+    } else return res.data.data;
+  }
+);
+
 const deleteSwapRequests = createAsyncThunk(
   "indexSwapReducer/deleteSwapRequests",
   async (index) => {
@@ -46,6 +59,12 @@ const indexSwapSlice = createSlice({
       .addCase(addSwapRequests.fulfilled, (state, action) => {
         state.swapRequests.push(action.payload);
       })
+      .addCase(editSwapRequests.fulfilled, (state, action) => {
+        const index = state.swapRequests.findIndex(
+          (request) => (request._id = action.payload._id)
+        );
+        state.swapRequests[index] = action.payload;
+      })
       .addCase(deleteSwapRequests.fulfilled, (state, action) => {
         return {
           ...state,
@@ -57,5 +76,10 @@ const indexSwapSlice = createSlice({
   },
 });
 
-export { getSwapRequests, deleteSwapRequests, addSwapRequests };
+export {
+  getSwapRequests,
+  deleteSwapRequests,
+  addSwapRequests,
+  editSwapRequests,
+};
 export default indexSwapSlice.reducer;

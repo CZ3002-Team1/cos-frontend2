@@ -7,4 +7,26 @@
     justify-content: left;
     margin-bottom: rem-calc(40);
   }
+  &__edit-icon {
+    transform: scale(1.5);
+    transition: all 0.3s ease-in-out;
+    border-radius: 50%;
+    padding: 3px;
+    margin: rem-calc(15);
+    &:hover {
+      transform: scale(2);
+      background-color: $jungle_mist;
+    }
+  }
+  &__delete-icon {
+    transform: scale(1.5);
+    transition: all 0.3s ease-in-out;
+    border-radius: 50%;
+    padding: 3px;
+    margin: rem-calc(15);
+    &:hover {
+      transform: scale(2);
+      background-color: $brand__palered;
+    }
+  }
 }

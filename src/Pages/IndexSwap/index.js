@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import IndexSwapTable from "./IndexSwapTable/index";
 import { Header1 } from "Styles/Typography";
 import CustomButton from "Commons/CustomButton";
-import IndexSwapForm from "./IndesSwapForm";
+import IndexSwapForm from "./IndexSwapForm";
 
 import { addSwapRequests, getSwapRequests } from "./IndexSwapReducer";
 

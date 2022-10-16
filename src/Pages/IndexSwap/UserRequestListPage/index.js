@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { addSwapRequests, deleteSwapRequests } from "../IndexSwapReducer";
+import {
+  addSwapRequests,
+  deleteSwapRequests,
+  editSwapRequests,
+} from "../IndexSwapReducer";
 
 import IndexSwapTable from "../IndexSwapTable";
 import { Header1 } from "Styles/Typography";
 import CustomButton from "Commons/CustomButton";
-import IndexSwapForm from "./../IndesSwapForm/index";
+import IndexSwapForm from "../IndexSwapForm/index";
 
 import "./style.scss";
 
@@ -31,8 +35,12 @@ const UserRequestListPage = () => {
     dispatch(deleteSwapRequests(record._id));
   };
 
-  const handleFormSubmit = async (values) => {
+  const handleFormSubmit = (values) => {
     dispatch(addSwapRequests(values));
+  };
+
+  const handleEditSubmit = (values) => {
+    dispatch(editSwapRequests(values));
   };
 
   return (
@@ -51,8 +59,9 @@ const UserRequestListPage = () => {
       <div className="indexSwapUserRequest-page__table-wrapper">
         <IndexSwapTable
           data={userSwapRequests}
-          deleteAllowed={true}
+          editAllowed={true}
           onDelete={handleDelete}
+          onEditSubmit={handleEditSubmit}
         />
       </div>
       <IndexSwapForm

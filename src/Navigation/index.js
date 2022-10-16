@@ -15,6 +15,7 @@ import PaymentFailPage from "Pages/MerchandiseShop/PaymentFailPage";
 import UserRequestListPage from "Pages/IndexSwap/UserRequestListPage";
 import MyOrdersPage from "Pages/MerchandiseShop/MyOrdersPage";
 
+import NotFoundPage from "../Pages/General/NotFoundPage";
 import { UserRoute } from "./PrivateRoute";
 
 const MainNavigation = () => {
@@ -107,6 +108,7 @@ const MainNavigation = () => {
             }
           />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   );

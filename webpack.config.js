@@ -73,7 +73,6 @@ module.exports = {
       App: path.resolve(__dirname, "./src/App"),
       Commons: path.resolve(__dirname, "./src/Commons"),
       Pages: path.resolve(__dirname, "./src/Pages"),
-      PintuShop: path.resolve(__dirname, "./src/Pages/PintuShop"),
       Styles: path.resolve(__dirname, "./src/Styles"),
       Fonts: path.resolve(__dirname, "./src/Styles/Fonts"),
       GlobalStyles: path.resolve(__dirname, "./src/Styles/Global"),

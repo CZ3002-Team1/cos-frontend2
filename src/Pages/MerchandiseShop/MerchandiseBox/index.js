@@ -69,7 +69,7 @@ const MerchandiseBox = ({ data, editMode, onDelete }) => {
             </div>
           )}
         </div>
-        <Body2>Price: {data.Price}</Body2>
+        <Body2>Price: ${data.Price.toFixed(2)}</Body2>
       </div>
       <Modal
         title="Confirm Delete"

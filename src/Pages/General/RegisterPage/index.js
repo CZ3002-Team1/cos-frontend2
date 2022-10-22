@@ -167,6 +167,23 @@ const RegisterPage = () => {
                 required: true,
                 message: "Please input your password!",
               },
+              () => ({
+                async validator(_, value) {
+                  if (value.length === 0) return Promise.reject();
+                  const valid =
+                    value.length >= 8 &&
+                    /[A-Z]/.test(value) &&
+                    /[^a-zA-Z]/.test(value) &&
+                    /[0-9]/.test(value) &&
+                    /[~@$!%*?&\.\+\*\(\)\{\}\[\]\-,;`<>':"=^#_|\/\\]/.test(
+                      value
+                    );
+                  if (valid) return Promise.resolve;
+                  return Promise.reject(
+                    "Password should contain min 8 characters, mix of lower and uppercase, a number and a special character"
+                  );
+                },
+              }),
             ]}
           >
             <Input.Password addonBefore="Password" />
@@ -175,7 +192,7 @@ const RegisterPage = () => {
             name="reenterPassword"
             rules={[
               ({ getFieldValue }) => ({
-                validator(_, value) {
+                async validator(_, value) {
                   if (value && getFieldValue("Password") === value) {
                     return Promise.resolve();
                   }

@@ -45,7 +45,7 @@ const EditEventForm = ({ isOpen, onCancel, onSubmit, data }) => {
               onCancel();
             })
             .catch((info) => {
-              console.log("Validate Failed:", info);
+              alert("Validate Failed:", info);
             });
         }}
       >

@@ -6,7 +6,7 @@ import apiEndPoint from "../../../ApiEndPoint";
 const getToken = createAsyncThunk("userReducer/getToken", async (values) => {
   const res = await axios.post(`${apiEndPoint}api/auth/login`, values);
   if (res.data.success === false) {
-    alert("login fail");
+    alert(res.data.message);
   }
 
   return res.data;

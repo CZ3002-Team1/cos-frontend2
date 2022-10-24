@@ -43,7 +43,7 @@ const EditMerchandiseForm = ({ data, isOpen, onCancel, onSubmit }) => {
               onCancel();
             })
             .catch((info) => {
-              console.log("Validate Failed:", info);
+              alert("Validate Failed:", info);
             });
         }}
       >

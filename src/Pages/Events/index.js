@@ -61,7 +61,6 @@ const EventsPage = () => {
   };
 
   const handleDateFilter = (date) => {
-    console.log(date);
     if (date === null) {
       setDisplayData([...eventInfo.eventList].sort(sortDate));
     } else {

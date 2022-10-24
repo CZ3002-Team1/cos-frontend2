@@ -61,9 +61,9 @@ const indexSwapSlice = createSlice({
       })
       .addCase(editSwapRequests.fulfilled, (state, action) => {
         const index = state.swapRequests.findIndex(
-          (request) => (request._id = action.payload._id)
+          (request) => request._id === action.payload._id
         );
-        state.swapRequests[index] = action.payload;
+        state.swapRequests.splice(index, 1, action.payload);
       })
       .addCase(deleteSwapRequests.fulfilled, (state, action) => {
         return {

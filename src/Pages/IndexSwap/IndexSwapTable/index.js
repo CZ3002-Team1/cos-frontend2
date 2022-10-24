@@ -6,6 +6,7 @@ import SearchBox from "Commons/SearchBox";
 
 import "./style.scss";
 import EditIndexSwapForm from "../EditIndexSwapForm";
+import EditIndexSwap from "./../EditIndexSwap/index";
 
 const IndexSwapTable = ({ data, editAllowed, onDelete, onEditSubmit }) => {
   const [moduleQuery, setModuleQuery] = useState("");
@@ -74,27 +75,15 @@ const IndexSwapTable = ({ data, editAllowed, onDelete, onEditSubmit }) => {
     {
       title: "",
       key: "edit",
-      render: (record) =>
+      render: (_, record) =>
         editAllowed && (
-          <div>
-            <FormOutlined
-              className="indexswap-table__edit-icon"
-              alt="trash"
-              onClick={() => setIsEditOpen(true)}
-            />
-            <EditIndexSwapForm
-              isOpen={isEditOpen}
-              onSubmit={onEditSubmit}
-              onCancel={() => setIsEditOpen(false)}
-              data={record}
-            />
-          </div>
+          <EditIndexSwap record={record} onEditSubmit={onEditSubmit} />
         ),
     },
     {
       title: "",
       key: "delete",
-      render: (record) =>
+      render: (_, record) =>
         editAllowed && (
           <DeleteOutlined
             className="indexswap-table__delete-icon"

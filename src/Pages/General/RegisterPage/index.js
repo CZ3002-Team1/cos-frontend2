@@ -157,6 +157,7 @@ const RegisterPage = () => {
               },
               () => ({
                 async validator(_, value) {
+                  if (!value) return Promise.reject();
                   if (
                     value &&
                     value.length === 8 &&

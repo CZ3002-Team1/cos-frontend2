@@ -54,7 +54,7 @@ const RegisterPage = () => {
   };
 
   const onFinishFailed = (errorInfo) => {
-    alert("Failed:", errorInfo);
+    console.log("Failed:", errorInfo);
   };
 
   return (
@@ -155,6 +155,18 @@ const RegisterPage = () => {
                 required: true,
                 message: "Please input your phone number!",
               },
+              () => ({
+                async validator(_, value) {
+                  if (
+                    value &&
+                    value.length === 8 &&
+                    (value.startsWith("8") || value.startsWith("9"))
+                  ) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject("Please input a valid phone number");
+                },
+              }),
             ]}
           >
             <Input addonBefore="Phone No." />
@@ -169,7 +181,7 @@ const RegisterPage = () => {
               },
               () => ({
                 async validator(_, value) {
-                  if (value.length === 0) return Promise.reject();
+                  if (!value) return Promise.reject();
                   const valid =
                     value.length >= 8 &&
                     /[A-Z]/.test(value) &&

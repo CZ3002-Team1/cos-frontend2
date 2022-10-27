@@ -29,7 +29,7 @@ const LoginPage = () => {
   };
 
   const onFinishFailed = (errorInfo) => {
-    alert("Failed:", errorInfo);
+    console.isLoggedIn("Failed:", errorInfo);
   };
 
   useEffect(() => {

@@ -122,7 +122,7 @@ const EditMerchandiseForm = ({ data, isOpen, onCancel, onSubmit }) => {
               }),
             ]}
           >
-            <TagInput tags={sizes} setTags={setSizes} title="Color" />
+            <TagInput tags={sizes} setTags={setSizes} title="Size" />
           </Form.Item>
           <Form.Item
             name="Description"
